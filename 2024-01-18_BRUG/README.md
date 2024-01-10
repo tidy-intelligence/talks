@@ -1,5 +1,13 @@
 # 2024-01-01 BRUG
 
+## References
+
+I used the following resources to compile this talk:
+
+- "Hello, Quarto" slides by Julia Lowndes and Mine Çetinkaya Rundel, presented at RStudio Conference 2022: https://mine.quarto.pub/hello-quarto/
+- "From Jupyter Notebooks to websites with Quarto" slides by Mine Çetinkaya Rundel, presented at PyData 2023: https://mine.quarto.pub/quarto-pydata/#/title-slide
+
+
 ## Set-up
 
 These are the steps that I executed to set up this project:

@@ -2,10 +2,123 @@
 title: "Unlocking Advanced Publishing Capabilities with Quarto"
 subtitle: "Berlin R Users Group Meetup #50"
 author: "Christoph SCheuch"
-format: revealjs
+execute:
+  cache: true
+format:
+  revealjs:
+    transition: fade
+    slide-number: true
+    chalkboard: false
+    theme: slides.scss
+    # height: 900
+    # width: 1600
 ---
 
-# Plot with R
+## About me
+
+- Head of Artificial Intelligence at [wikifolio.com](https://www.wikifolio.com/en/int/home) (currently on sabbatical)
+- Co-author & maintainer of [tidy-finance.org](https://www.tidy-finance.org/)
+- Content Creator at [tidy-intelligence.com](https://www.tidy-intelligence.com/)
+- Occasional t-shirt & mug designer at [TidySwag](https://www.etsy.com/shop/tidyswag/)
+
+INSERT IMAGE WITH DIFFERENT LOGOS ON THE RIGHT
+
+# What is Quarto?
+
+## An open-source, scientific & technical publishing system
+
+![Quarto Schematic, Artwork by Allison Horst.](assets/img/horst_quarto_schematic.png)
+
+## Weave together narrative and code
+
+Produce elegantly formatted output as documents, web pages, blog posts, books and more 
+
+![Quarto Authoring Tools.](assets/img/quarto_authoring_tools.png)
+
+
+## Just like Rmarkdown..
+
+... but much more powerful!
+
+- Consistent implementation of attractive and handy features across outputs: tabsets, code-folding, syntax highlighting, etc.
+- Defaults that meet accessibility guidelines as well as features that enable good practices for producing accessible documents
+- Natively multi-lingual, supporting for multiple languages like Python, Julia, Observable, and more via the Jupyter engine for executable code chunks
+
+## Illustration of Quarto 
+
+![Quarto Schematic, Artwork by Allison Horst.](assets/img/horst_qmd_render_schema.png)
+
+## What happens under the hood?
+
+- knitr or jupyter evaluates R/Python/Julia code and returns a .md file along with the evaluated code
+- Quarto applies Lua filters + CSS/LaTeX which is then evaluated alongside the .md file by Pandoc and converted to a final output format
+
+## Move between formats easily
+
+::: columns
+::: {.column width="33%"}
+::: fragment
+Document
+
+::: {.code-file .sourceCode .cell-code}
+{{< fa file >}} document.qmd
+:::
+
+``` yaml
+title: "My Document"
+format: pdf
+```
+:::
+:::
+
+::: {.column width="33%"}
+::: fragment
+Presentation
+
+::: {.code-file .sourceCode .cell-code}
+{{< fa file >}} slides.qmd
+:::
+
+``` yaml
+title: "My presentation"
+format: revealjs
+```
+:::
+:::
+
+::: {.column width="33%"}
+::: fragment
+Website
+
+::: {.code-file .sourceCode .cell-code}
+{{< fa file >}} _quarto.yml
+:::
+
+``` yaml
+project:
+  type: website
+
+website: 
+  navbar: 
+    left:
+      - page-one.qmd
+```
+:::
+:::
+:::
+
+## Where does the term "Quarto" come from?
+
+```{=html}
+<iframe src="https://en.wikipedia.org/wiki/Quarto" title = "Quarto on Wikipedia" frameborder="1" height="100%" width="100%"></iframe>
+```
+::: aside
+Source: <https://en.wikipedia.org/wiki/Quarto>
+:::
+
+# Showcasing some example
+
+## Include code & plot with R
 
 ```{r}
 library(ggplot2)
@@ -25,7 +138,7 @@ ggplot(penguins,
   theme_minimal()
 ```
 
-# Plot with Python
+## Replicate the same with Python
 
 ```{python}
 from plotnine import *
@@ -45,3 +158,61 @@ penguins = load_penguins().dropna()
   + theme_minimal()
 )
 ```
+
+## Tabs to switch between languages
+
+::: {.panel-tabset}
+### R
+```{r}
+library(ggplot2)
+library(palmerpenguins)
+
+penguins <- na.omit(palmerpenguins::penguins)
+
+ggplot(penguins,
+       aes(x = bill_length_mm, y = bill_depth_mm,
+           color = species, shape = species)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(x = "Bill length (mm)", y = "Bill Width (mm)",
+       title = "Bill Length vs. Bill Width",
+       subtitle = "Using geom_point and geom_smooth",
+       color = "Species", shape = "Species") +
+  theme_minimal()
+```
+
+### Python
+```{python}
+from plotnine import *
+from palmerpenguins import load_penguins
+
+penguins = load_penguins().dropna()
+
+(ggplot(penguins, 
+        aes(x = "bill_length_mm", y = "bill_depth_mm", 
+            color = "species", shape = "species"))
+  + geom_point()
+  + geom_smooth(method = "lm")
+  + labs(x = "Bill Length (mm)", y = "Bill Width (mm)", 
+         title = "Bill Length vs. Bill Width", 
+         subtitle = "Using geom_point and geom_smooth",
+         color = "Species", shape = "Species")
+  + theme_minimal()
+)
+```
+
+:::
+
+## Great for language comparisons
+
+```{=html}
+<iframe src="https://blog.tidy-intelligence.com/" title = "Tidy Intelligence Blog" frameborder="1" height="100%" width="100%"></iframe>
+```
+
+## How is it possible to render multiple languages?
+
+CREATE ILLUSTRATION OF KNITR USING DIFFERENT LANGUAGE BACKENDS
+
+## Include javascript libraries
+
+## Create dashboards (with shiny backends)

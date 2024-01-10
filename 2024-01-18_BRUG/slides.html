@@ -7,7 +7,9 @@
 <link href="slides_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="slides_files/libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="slides_files/libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.538">
 
   <meta name="author" content="Christoph SCheuch">
@@ -29,6 +31,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto.css">
   <link href="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -338,25 +405,165 @@ Christoph SCheuch
 </div>
 
 </section>
-<section id="plot-with-r" class="title-slide slide level1 center">
-<h1>Plot with R</h1>
+<section id="about-me" class="slide level2">
+<h2>About me</h2>
+<ul>
+<li>Head of Artificial Intelligence at <a href="https://www.wikifolio.com/en/int/home">wikifolio.com</a> (currently on sabbatical)</li>
+<li>Co-author &amp; maintainer of <a href="https://www.tidy-finance.org/">tidy-finance.org</a></li>
+<li>Content Creator at <a href="https://www.tidy-intelligence.com/">tidy-intelligence.com</a></li>
+<li>Occasional t-shirt &amp; mug designer at <a href="https://www.etsy.com/shop/tidyswag/">TidySwag</a></li>
+</ul>
+<p>INSERT IMAGE WITH DIFFERENT LOGOS ON THE RIGHT</p>
+</section>
+<section>
+<section id="what-is-quarto" class="title-slide slide level1 center">
+<h1>What is Quarto?</h1>
+
+</section>
+<section id="an-open-source-scientific-technical-publishing-system" class="slide level2">
+<h2>An open-source, scientific &amp; technical publishing system</h2>
+
+<img data-src="assets/img/horst_quarto_schematic.png" class="r-stretch quarto-figure-center"><p class="caption">Quarto Schematic, Artwork by Allison Horst.</p></section>
+<section id="weave-together-narrative-and-code" class="slide level2">
+<h2>Weave together narrative and code</h2>
+<p>Produce elegantly formatted output as documents, web pages, blog posts, books and more</p>
+
+<img data-src="assets/img/quarto_authoring_tools.png" class="r-stretch quarto-figure-center"><p class="caption">Quarto Authoring Tools.</p></section>
+<section id="just-like-rmarkdown.." class="slide level2">
+<h2>Just like Rmarkdown..</h2>
+<p>… but much more powerful!</p>
+<ul>
+<li>Consistent implementation of attractive and handy features across outputs: tabsets, code-folding, syntax highlighting, etc.</li>
+<li>Defaults that meet accessibility guidelines as well as features that enable good practices for producing accessible documents</li>
+<li>Natively multi-lingual, supporting for multiple languages like Python, Julia, Observable, and more via the Jupyter engine for executable code chunks</li>
+</ul>
+</section>
+<section id="illustration-of-quarto" class="slide level2">
+<h2>Illustration of Quarto</h2>
+
+<img data-src="assets/img/horst_qmd_render_schema.png" class="r-stretch quarto-figure-center"><p class="caption">Quarto Schematic, Artwork by Allison Horst.</p></section>
+<section id="what-happens-under-the-hood" class="slide level2">
+<h2>What happens under the hood?</h2>
+<ul>
+<li>knitr or jupyter evaluates R/Python/Julia code and returns a .md file along with the evaluated code</li>
+<li>Quarto applies Lua filters + CSS/LaTeX which is then evaluated alongside the .md file by Pandoc and converted to a final output format</li>
+</ul>
+</section>
+<section id="move-between-formats-easily" class="slide level2">
+<h2>Move between formats easily</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div class="fragment">
+<p>Document</p>
+<div class="code-file sourceCode cell-code">
+<p><i class="fa-solid fa-file" aria-label="file"></i> document.qmd</p>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href=""></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
+<span id="cb1-2"><a href=""></a><span class="fu">format</span><span class="kw">:</span><span class="at"> pdf</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="fragment">
+<p>Presentation</p>
+<div class="code-file sourceCode cell-code">
+<p><i class="fa-solid fa-file" aria-label="file"></i> slides.qmd</p>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href=""></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My presentation"</span></span>
+<span id="cb2-2"><a href=""></a><span class="fu">format</span><span class="kw">:</span><span class="at"> revealjs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="fragment">
+<p>Website</p>
+<div class="code-file sourceCode cell-code">
+<p><i class="fa-solid fa-file" aria-label="file"></i> _quarto.yml</p>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href=""></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href=""></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
+<span id="cb3-3"><a href=""></a></span>
+<span id="cb3-4"><a href=""></a><span class="fu">website</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb3-5"><a href=""></a><span class="at">  </span><span class="fu">navbar</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb3-6"><a href=""></a><span class="at">    </span><span class="fu">left</span><span class="kw">:</span></span>
+<span id="cb3-7"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> page-one.qmd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="where-does-the-term-quarto-come-from" class="slide level2">
+<h2>Where does the term “Quarto” come from?</h2>
+<iframe src="https://en.wikipedia.org/wiki/Quarto" title="Quarto on Wikipedia" frameborder="1" height="100%" width="100%"></iframe>
+
+<aside><div>
+<p>Source: <a href="https://en.wikipedia.org/wiki/Quarto" class="uri">https://en.wikipedia.org/wiki/Quarto</a></p>
+</div></aside></section></section>
+<section>
+<section id="showcasing-some-example" class="title-slide slide level1 center">
+<h1>Showcasing some example</h1>
+
+</section>
+<section id="include-code-plot-with-r" class="slide level2">
+<h2>Include code &amp; plot with R</h2>
 
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
-
-<section id="plot-with-python" class="title-slide slide level1 center">
-<h1>Plot with Python</h1>
+<section id="replicate-the-same-with-python" class="slide level2">
+<h2>Replicate the same with Python</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;Figure Size: (1280 x 960)&gt;</code></pre>
+<pre><code>&lt;Figure Size: (640 x 480)&gt;</code></pre>
 </div>
 
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" width="614" class="r-stretch"><div class="quarto-auto-generated-content">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" width="614" class="r-stretch"></section>
+<section id="tabs-to-switch-between-languages" class="slide level2">
+<h2>Tabs to switch between languages</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">R</a></li><li><a href="#tabset-1-2">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;Figure Size: (640 x 480)&gt;</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" width="614"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="great-for-language-comparisons" class="slide level2">
+<h2>Great for language comparisons</h2>
+<iframe src="https://blog.tidy-intelligence.com/" title="Tidy Intelligence Blog" frameborder="1" height="100%" width="100%"></iframe>
+</section>
+<section id="how-is-it-possible-to-render-multiple-languages" class="slide level2">
+<h2>How is it possible to render multiple languages?</h2>
+<p>CREATE ILLUSTRATION OF KNITR USING DIFFERENT LANGUAGE BACKENDS</p>
+</section>
+<section id="include-javascript-libraries" class="slide level2">
+<h2>Include javascript libraries</h2>
+</section>
+<section id="create-dashboards-with-shiny-backends" class="slide level2">
+<h2>Create dashboards (with shiny backends)</h2>
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -408,7 +615,7 @@ Christoph SCheuch
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -513,7 +720,7 @@ Christoph SCheuch
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
+        transition: 'fade',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
