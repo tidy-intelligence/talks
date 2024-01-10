@@ -1,0 +1,51 @@
+---
+title: "Unlocking Advanced Publishing Capabilities with Quarto"
+subtitle: "Berlin R Users Group Meetup #50"
+author: "Christoph SCheuch"
+format: revealjs
+---
+
+```{r}
+Sys.setenv(TCL_LIBRARY = "C:/Users/christoph.scheuch/AppData/Local/r-reticulate/r-reticulate/pyenv/pyenv-win/versions/3.10.11/tcl/tcl8.6")
+```
+
+# Plot with R
+
+```{r}
+library(ggplot2)
+library(palmerpenguins)
+
+penguins <- na.omit(palmerpenguins::penguins)
+
+ggplot(penguins,
+       aes(x = bill_length_mm, y = bill_depth_mm,
+           color = species, shape = species)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(x = "Bill length (mm)", y = "Bill Width (mm)",
+       title = "Bill Length vs. Bill Width",
+       subtitle = "Using geom_point and geom_smooth",
+       color = "Species", shape = "Species") +
+  theme_minimal()
+```
+
+# Plot with Python
+
+```{python}
+from plotnine import *
+from palmerpenguins import load_penguins
+
+penguins = load_penguins().dropna()
+
+(ggplot(penguins, 
+        aes(x = "bill_length_mm", y = "bill_depth_mm", 
+            color = "species", shape = "species"))
+  + geom_point()
+  + geom_smooth(method = "lm")
+  + labs(x = "Bill Length (mm)", y = "Bill Width (mm)", 
+         title = "Bill Length vs. Bill Width", 
+         subtitle = "Using geom_point and geom_smooth",
+         color = "Species", shape = "Species")
+  + theme_minimal()
+)
+```
