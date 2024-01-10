@@ -6,5 +6,7 @@
 2. `renv::activate()`
 3. `install.packages("reticulate")`
 4. `reticulate::install_python(version="3.10.11", force = TRUE)`
-5. `renv::use_python("C:/Users/christoph.scheuch/AppData/Local/r-reticulate/r-reticulate/pyenv/pyenv-win/versions/3.10.11/python.exe")`
+5. 
+ - `renv::use_python("C:/Users/christoph.scheuch/AppData/Local/r-reticulate/r-reticulate/pyenv/pyenv-win/versions/3.10.11/python.exe")`
+ - `renv::use_python("~/.pyenv/versions/3.10.11/bin/python")`
 6. `renv::restore()`
