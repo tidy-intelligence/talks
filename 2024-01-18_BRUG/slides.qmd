@@ -3,7 +3,7 @@ title: "Unlocking Advanced Publishing Capabilities with Quarto"
 subtitle: "Berlin R Users Group Meetup #50"
 author: "Christoph SCheuch"
 execute:
-  cache: true
+  cache: false
 format:
   revealjs:
     transition: fade
@@ -188,7 +188,7 @@ from palmerpenguins import load_penguins
 
 penguins = load_penguins().dropna()
 
-(ggplot(penguins, 
+penguins_plot = (ggplot(penguins, 
         aes(x = "bill_length_mm", y = "bill_depth_mm", 
             color = "species", shape = "species"))
   + geom_point()
@@ -198,6 +198,25 @@ penguins = load_penguins().dropna()
          subtitle = "Using geom_point and geom_smooth",
          color = "Species", shape = "Species")
   + theme_minimal()
+)
+penguins_plot.draw()
+```
+### Julia
+```{julia}
+using Plots, DataFrames, StatsPlots, PalmerPenguins
+
+penguins = dropmissing(DataFrame(PalmerPenguins.load()));
+
+scatter(
+  penguins.bill_length_mm, penguins.bill_depth_mm, 
+  group = penguins.species,
+  xlabel = "Bill length (mm)", ylabel = "Bill Width (mm)",
+  title = "Bill Length vs. Bill Width",
+  subtitle = "Using scatter and lm",
+  legend = :outerright,
+  markershape = :auto, 
+  regression = true,
+  size = (670, 480)
 )
 ```
 
