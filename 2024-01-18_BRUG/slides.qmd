@@ -1,7 +1,7 @@
 ---
 title: "Unlocking Advanced Publishing Capabilities with Quarto"
 subtitle: "Berlin R Users Group Meetup #50"
-author: "Christoph SCheuch"
+author: "Christoph Scheuch"
 execute:
   cache: false
 format:
