@@ -1,0 +1,21 @@
+---
+title: "A Dummy Document"
+author: "Christoph Scheuch"
+format: pdf
+---
+
+## This is a headline
+
+Here goes some code:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this 
+
+```{r}
+#| eval: true
+#| output: false
+2 * 2
+```

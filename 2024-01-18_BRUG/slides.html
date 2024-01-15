@@ -12,7 +12,7 @@
 <link href="slides_files/libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.538">
 
-  <meta name="author" content="Christoph SCheuch">
+  <meta name="author" content="Christoph Scheuch">
   <title>Unlocking Advanced Publishing Capabilities with Quarto</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -399,7 +399,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Christoph SCheuch 
+Christoph Scheuch 
 </div>
 </div>
 </div>
@@ -407,13 +407,19 @@ Christoph SCheuch
 </section>
 <section id="about-me" class="slide level2">
 <h2>About me</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p><br> <br></p>
 <ul>
-<li>Head of Artificial Intelligence at <a href="https://www.wikifolio.com/en/int/home">wikifolio.com</a> (currently on sabbatical)</li>
+<li>Head of AI at <a href="https://www.wikifolio.com/en/int/home">wikifolio.com</a></li>
 <li>Co-author &amp; maintainer of <a href="https://www.tidy-finance.org/">tidy-finance.org</a></li>
-<li>Content Creator at <a href="https://www.tidy-intelligence.com/">tidy-intelligence.com</a></li>
-<li>Occasional t-shirt &amp; mug designer at <a href="https://www.etsy.com/shop/tidyswag/">TidySwag</a></li>
+<li>Content creator at <a href="https://www.tidy-intelligence.com/">tidy-intelligence.com</a></li>
+<li>T-shirt &amp; mug designer at <a href="https://www.etsy.com/shop/tidyswag/">TidySwag</a></li>
 </ul>
-<p>INSERT IMAGE WITH DIFFERENT LOGOS ON THE RIGHT</p>
+</div><div class="column" style="width:30%;">
+<p><img data-src="assets/img/about_me_logos.png"></p>
+</div>
+</div>
 </section>
 <section>
 <section id="what-is-quarto" class="title-slide slide level1 center">
@@ -422,34 +428,39 @@ Christoph SCheuch
 </section>
 <section id="an-open-source-scientific-technical-publishing-system" class="slide level2">
 <h2>An open-source, scientific &amp; technical publishing system</h2>
+<p><br></p>
 
 <img data-src="assets/img/horst_quarto_schematic.png" class="r-stretch quarto-figure-center"><p class="caption">Quarto Schematic, Artwork by Allison Horst.</p></section>
-<section id="weave-together-narrative-and-code" class="slide level2">
-<h2>Weave together narrative and code</h2>
+<section id="weave-together-narrative-code" class="slide level2">
+<h2>Weave together narrative &amp; code</h2>
 <p>Produce elegantly formatted output as documents, web pages, blog posts, books and more</p>
+<p><br> <br></p>
+<p>Using a variety of authoring tools!</p>
 
 <img data-src="assets/img/quarto_authoring_tools.png" class="r-stretch quarto-figure-center"><p class="caption">Quarto Authoring Tools.</p></section>
-<section id="just-like-rmarkdown.." class="slide level2">
-<h2>Just like Rmarkdown..</h2>
+<section id="just-like-rmarkdown" class="slide level2">
+<h2>Just like Rmarkdown …</h2>
 <p>… but much more powerful!</p>
+<p><br></p>
 <ul>
-<li>Consistent implementation of attractive and handy features across outputs: tabsets, code-folding, syntax highlighting, etc.</li>
-<li>Defaults that meet accessibility guidelines as well as features that enable good practices for producing accessible documents</li>
-<li>Natively multi-lingual, supporting for multiple languages like Python, Julia, Observable, and more via the Jupyter engine for executable code chunks</li>
+<li><strong>Consistent implementation</strong> of attractive &amp; handy features across outputs: tabsets, code-folding, syntax highlighting, etc.</li>
+<li>Features &amp; defaults that enable good practices for producing <strong>accessible documents</strong></li>
+<li>Natively <strong>multi-lingual</strong>, supporting for multiple languages like Python, Julia, Observable</li>
 </ul>
 </section>
 <section id="illustration-of-quarto" class="slide level2">
 <h2>Illustration of Quarto</h2>
+<p><br></p>
 
 <img data-src="assets/img/horst_qmd_render_schema.png" class="r-stretch quarto-figure-center"><p class="caption">Quarto Schematic, Artwork by Allison Horst.</p></section>
-<section id="what-happens-under-the-hood" class="slide level2">
+<section id="what-happens-under-the-hood" class="slide level2 smaller">
 <h2>What happens under the hood?</h2>
-<ul>
-<li>knitr or jupyter evaluates R/Python/Julia code and returns a .md file along with the evaluated code</li>
-<li>Quarto applies Lua filters + CSS/LaTeX which is then evaluated alongside the .md file by Pandoc and converted to a final output format</li>
-</ul>
-</section>
-<section id="move-between-formats-easily" class="slide level2">
+<p><code>knitr</code>: R package for dynamic report generation</p>
+<p><code>jupyter</code>: popular notebook authoring tool in Python community</p>
+<p><code>pandoc</code> is a command line markup format converter</p>
+
+<img data-src="assets/img/quarto_process_breakdown.png" class="r-stretch quarto-figure-center"><p class="caption">Illusration by Christoph Scheuch.</p></section>
+<section id="move-between-formats-easily" class="slide level2 smaller">
 <h2>Move between formats easily</h2>
 <div class="columns">
 <div class="column" style="width:33%;">
@@ -472,17 +483,42 @@ Christoph SCheuch
 </div>
 </div><div class="column" style="width:33%;">
 <div class="fragment">
+<p>Dashboard</p>
+<div class="code-file sourceCode cell-code">
+<p><i class="fa-solid fa-file" aria-label="file"></i> dashboard.qmd</p>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href=""></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href=""></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> dashboard</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="fragment">
 <p>Website</p>
 <div class="code-file sourceCode cell-code">
 <p><i class="fa-solid fa-file" aria-label="file"></i> _quarto.yml</p>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href=""></a><span class="fu">project</span><span class="kw">:</span></span>
-<span id="cb3-2"><a href=""></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
-<span id="cb3-3"><a href=""></a></span>
-<span id="cb3-4"><a href=""></a><span class="fu">website</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb3-5"><a href=""></a><span class="at">  </span><span class="fu">navbar</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb3-6"><a href=""></a><span class="at">    </span><span class="fu">left</span><span class="kw">:</span></span>
-<span id="cb3-7"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> page-one.qmd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href=""></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb4-2"><a href=""></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
+<span id="cb4-3"><a href=""></a></span>
+<span id="cb4-4"><a href=""></a><span class="fu">website</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb4-5"><a href=""></a><span class="at">  </span><span class="fu">navbar</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb4-6"><a href=""></a><span class="at">    </span><span class="fu">left</span><span class="kw">:</span></span>
+<span id="cb4-7"><a href=""></a><span class="at">      </span><span class="kw">-</span><span class="at"> page-one.qmd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="fragment">
+<p>Book</p>
+<div class="code-file sourceCode cell-code">
+<p><i class="fa-solid fa-file" aria-label="file"></i> _quarto.yml</p>
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href=""></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb5-2"><a href=""></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> book</span></span>
+<span id="cb5-3"><a href=""></a></span>
+<span id="cb5-4"><a href=""></a><span class="fu">book</span><span class="kw">:</span></span>
+<span id="cb5-5"><a href=""></a><span class="at">  </span><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Book"</span></span>
+<span id="cb5-6"><a href=""></a><span class="at">  </span><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Jane Doe"</span></span>
+<span id="cb5-7"><a href=""></a><span class="at">  </span><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"18/01/2024"</span></span>
+<span id="cb5-8"><a href=""></a><span class="at">  </span><span class="fu">chapters</span><span class="kw">:</span></span>
+<span id="cb5-9"><a href=""></a><span class="at">    </span><span class="kw">-</span><span class="at"> index.qmd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -490,68 +526,158 @@ Christoph SCheuch
 <section id="where-does-the-term-quarto-come-from" class="slide level2">
 <h2>Where does the term “Quarto” come from?</h2>
 <iframe src="https://en.wikipedia.org/wiki/Quarto" title="Quarto on Wikipedia" frameborder="1" height="100%" width="100%"></iframe>
-
-<aside><div>
-<p>Source: <a href="https://en.wikipedia.org/wiki/Quarto" class="uri">https://en.wikipedia.org/wiki/Quarto</a></p>
-</div></aside></section></section>
+</section></section>
 <section>
-<section id="showcasing-some-example" class="title-slide slide level1 center">
-<h1>Showcasing some example</h1>
+<section id="quarto-showcases" class="title-slide slide level1 center">
+<h1>Quarto showcases</h1>
 
 </section>
-<section id="include-code-plot-with-r" class="slide level2">
-<h2>Include code &amp; plot with R</h2>
+<section id="create-a-quarto-document" class="slide level2 smaller">
+<h2>Create a quarto document</h2>
+<div class="code-file sourceCode cell-code">
+<p><i class="fa-solid fa-file" aria-label="file"></i> dummy.qmd</p>
+</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href=""></a><span class="co">---</span></span>
+<span id="cb6-2"><a href=""></a><span class="an">title:</span><span class="co"> "A Dummy Document"</span></span>
+<span id="cb6-3"><a href=""></a><span class="an">author:</span><span class="co"> "Christoph Scheuch"</span></span>
+<span id="cb6-4"><a href=""></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb6-5"><a href=""></a><span class="co">---</span></span>
+<span id="cb6-6"><a href=""></a></span>
+<span id="cb6-7"><a href=""></a><span class="fu">## This is a headline</span></span>
+<span id="cb6-8"><a href=""></a></span>
+<span id="cb6-9"><a href=""></a>Here goes some code:</span>
+<span id="cb6-10"><a href=""></a></span>
+<span id="cb6-11"><a href=""></a><span class="in">```{r}</span></span>
+<span id="cb6-12"><a href=""></a><span class="in">1 + 1</span></span>
+<span id="cb6-13"><a href=""></a><span class="in">```</span></span>
+<span id="cb6-14"><a href=""></a></span>
+<span id="cb6-15"><a href=""></a>You can add options to executable code like this </span>
+<span id="cb6-16"><a href=""></a></span>
+<span id="cb6-17"><a href=""></a><span class="in">```{r}</span></span>
+<span id="cb6-18"><a href=""></a><span class="in">#| eval: true</span></span>
+<span id="cb6-19"><a href=""></a><span class="in">#| output: false</span></span>
+<span id="cb6-20"><a href=""></a><span class="in">2 * 2</span></span>
+<span id="cb6-21"><a href=""></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="this-is-what-the-rendered-html-looks-like" class="slide level2">
+<h2>This is what the rendered HTML looks like</h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
-<section id="replicate-the-same-with-python" class="slide level2">
+<img data-src="assets/img/dummy_document_html.png" class="r-stretch"></section>
+<section id="this-is-what-the-rendered-pdf-looks-like" class="slide level2">
+<h2>This is what the rendered PDF looks like</h2>
+
+<img data-src="assets/img/dummy_document_pdf.png" class="r-stretch"></section>
+<section id="creating-a-presentation" class="slide level2 smaller">
+<h2>Creating a presentation</h2>
+<div class="code-file sourceCode cell-code">
+<p><i class="fa-solid fa-file" aria-label="file"></i> slides.qmd</p>
+</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href=""></a><span class="co">---</span></span>
+<span id="cb7-2"><a href=""></a><span class="an">title:</span><span class="co"> "Unlocking Advanced Publishing Capabilities with Quarto"</span></span>
+<span id="cb7-3"><a href=""></a><span class="an">subtitle:</span><span class="co"> "Berlin R Users Group Meetup #50"</span></span>
+<span id="cb7-4"><a href=""></a><span class="an">author:</span><span class="co"> "Christoph Scheuch"</span></span>
+<span id="cb7-5"><a href=""></a><span class="an">execute:</span></span>
+<span id="cb7-6"><a href=""></a><span class="co">  cache: true</span></span>
+<span id="cb7-7"><a href=""></a><span class="an">format:</span></span>
+<span id="cb7-8"><a href=""></a><span class="co">  revealjs:</span></span>
+<span id="cb7-9"><a href=""></a><span class="co">    transition: fade</span></span>
+<span id="cb7-10"><a href=""></a><span class="co">    slide-number: true</span></span>
+<span id="cb7-11"><a href=""></a><span class="co">    chalkboard: false</span></span>
+<span id="cb7-12"><a href=""></a><span class="co">    theme: slides.scss</span></span>
+<span id="cb7-13"><a href=""></a><span class="co">---</span></span>
+<span id="cb7-14"><a href=""></a></span>
+<span id="cb7-15"><a href=""></a><span class="fu">## About me</span></span>
+<span id="cb7-16"><a href=""></a></span>
+<span id="cb7-17"><a href=""></a><span class="ss">- </span>Head of Artificial Intelligence at <span class="co">[</span><span class="ot">wikifolio.com</span><span class="co">](https://www.wikifolio.com/en/int/home)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>See <a href="https://github.com/tidy-intelligence/talks">https://github.com/tidy-intelligence/talks</a> for full slides &amp; code</p>
+</section>
+<section id="include-code-plot-with-r" class="slide level2 smaller">
+<h2>Include code &amp; plot with R</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-2"><a href=""></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb8-3"><a href=""></a></span>
+<span id="cb8-4"><a href=""></a>penguins <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins</span>
+<span id="cb8-5"><a href=""></a></span>
+<span id="cb8-6"><a href=""></a><span class="fu">ggplot</span>(penguins,</span>
+<span id="cb8-7"><a href=""></a>       <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm, <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
+<span id="cb8-8"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-9"><a href=""></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb8-10"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Bill length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill Width (mm)"</span>,</span>
+<span id="cb8-11"><a href=""></a>       <span class="at">title =</span> <span class="st">"Bill Length vs. Bill Width"</span>, <span class="at">color =</span> <span class="st">"Species"</span>, <span class="at">shape =</span> <span class="st">"Species"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="replicate-the-same-with-python" class="slide level2 smaller">
 <h2>Replicate the same with Python</h2>
-<div class="cell">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb9-2"><a href=""></a><span class="im">from</span> palmerpenguins <span class="im">import</span> load_penguins</span>
+<span id="cb9-3"><a href=""></a></span>
+<span id="cb9-4"><a href=""></a>penguins <span class="op">=</span> load_penguins()</span>
+<span id="cb9-5"><a href=""></a></span>
+<span id="cb9-6"><a href=""></a>(ggplot(penguins, </span>
+<span id="cb9-7"><a href=""></a>        aes(x <span class="op">=</span> <span class="st">"bill_length_mm"</span>, y <span class="op">=</span> <span class="st">"bill_depth_mm"</span>, color <span class="op">=</span> <span class="st">"species"</span>, shape <span class="op">=</span> <span class="st">"species"</span>))</span>
+<span id="cb9-8"><a href=""></a>  <span class="op">+</span> geom_point()</span>
+<span id="cb9-9"><a href=""></a>  <span class="op">+</span> geom_smooth(method <span class="op">=</span> <span class="st">"lm"</span>)</span>
+<span id="cb9-10"><a href=""></a>  <span class="op">+</span> labs(x <span class="op">=</span> <span class="st">"Bill Length (mm)"</span>, y <span class="op">=</span> <span class="st">"Bill Width (mm)"</span>, </span>
+<span id="cb9-11"><a href=""></a>         title <span class="op">=</span> <span class="st">"Bill Length vs. Bill Width"</span>, color <span class="op">=</span> <span class="st">"Species"</span>, shape <span class="op">=</span> <span class="st">"Species"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;Figure Size: (640 x 480)&gt;</code></pre>
 </div>
 
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" width="614" class="r-stretch"></section>
-<section id="tabs-to-switch-between-languages" class="slide level2">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="614"></section>
+<section id="tabs-to-switch-between-languages" class="slide level2 smaller">
 <h2>Tabs to switch between languages</h2>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">R</a></li><li><a href="#tabset-1-2">Python</a></li><li><a href="#tabset-1-3">Julia</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">R</a></li><li><a href="#tabset-1-2">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-3-3.png" width="960"></p>
-</figure>
-</div>
-</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-2"><a href=""></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb11-3"><a href=""></a></span>
+<span id="cb11-4"><a href=""></a>penguins <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins</span>
+<span id="cb11-5"><a href=""></a></span>
+<span id="cb11-6"><a href=""></a><span class="fu">ggplot</span>(penguins,</span>
+<span id="cb11-7"><a href=""></a>       <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm, <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
+<span id="cb11-8"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb11-9"><a href=""></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb11-10"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Bill length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill Width (mm)"</span>,</span>
+<span id="cb11-11"><a href=""></a>       <span class="at">title =</span> <span class="st">"Bill Length vs. Bill Width"</span>, <span class="at">color =</span> <span class="st">"Species"</span>, <span class="at">shape =</span> <span class="st">"Species"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-1-2">
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;Figure Size: (640 x 480)&gt;</code></pre>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href=""></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb12-2"><a href=""></a><span class="im">from</span> palmerpenguins <span class="im">import</span> load_penguins</span>
+<span id="cb12-3"><a href=""></a></span>
+<span id="cb12-4"><a href=""></a>penguins <span class="op">=</span> load_penguins()</span>
+<span id="cb12-5"><a href=""></a></span>
+<span id="cb12-6"><a href=""></a>(ggplot(penguins, </span>
+<span id="cb12-7"><a href=""></a>        aes(x <span class="op">=</span> <span class="st">"bill_length_mm"</span>, y <span class="op">=</span> <span class="st">"bill_depth_mm"</span>, color <span class="op">=</span> <span class="st">"species"</span>, shape <span class="op">=</span> <span class="st">"species"</span>))</span>
+<span id="cb12-8"><a href=""></a>  <span class="op">+</span> geom_point()</span>
+<span id="cb12-9"><a href=""></a>  <span class="op">+</span> geom_smooth(method <span class="op">=</span> <span class="st">"lm"</span>)</span>
+<span id="cb12-10"><a href=""></a>  <span class="op">+</span> labs(x <span class="op">=</span> <span class="st">"Bill Length (mm)"</span>, y <span class="op">=</span> <span class="st">"Bill Width (mm)"</span>, </span>
+<span id="cb12-11"><a href=""></a>         title <span class="op">=</span> <span class="st">"Bill Length vs. Bill Width"</span>, color <span class="op">=</span> <span class="st">"Species"</span>, shape <span class="op">=</span> <span class="st">"Species"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" width="614"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-1-3">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-5-J1.png" width="335"></p>
-</figure>
-</div>
-</div>
-</div>
+<!-- ### Julia -->
+<!-- ```{julia} -->
+<!-- using Plots, DataFrames, StatsPlots, PalmerPenguins -->
+<!-- penguins = dropmissing(DataFrame(PalmerPenguins.load())); -->
+<!-- scatter( -->
+<!--   penguins.bill_length_mm, penguins.bill_depth_mm,  -->
+<!--   group = penguins.species, -->
+<!--   xlabel = "Bill length (mm)", ylabel = "Bill Width (mm)", -->
+<!--   title = "Bill Length vs. Bill Width", -->
+<!--   subtitle = "Using scatter and lm", -->
+<!--   legend = :outerright, -->
+<!--   markershape = :auto,  -->
+<!--   regression = true, -->
+<!--   size = (670, 480) -->
+<!-- ) -->
+<!-- ``` -->
 </div>
 </div>
 </div>
@@ -560,15 +686,57 @@ Christoph SCheuch
 <h2>Great for language comparisons</h2>
 <iframe src="https://blog.tidy-intelligence.com/" title="Tidy Intelligence Blog" frameborder="1" height="100%" width="100%"></iframe>
 </section>
-<section id="how-is-it-possible-to-render-multiple-languages" class="slide level2">
-<h2>How is it possible to render multiple languages?</h2>
-<p>CREATE ILLUSTRATION OF KNITR USING DIFFERENT LANGUAGE BACKENDS</p>
+<section id="wait-how-is-this-possible" class="slide level2">
+<h2>Wait, how is this possible?</h2>
+<p>Multiple languages in same doc through <code>knitr</code>’s capabilities</p>
+
+<img data-src="assets/img/knitr_process_breakdown.png" class="r-stretch quarto-figure-center"><p class="caption">Illusration by Christoph Scheuch.</p></section>
+<section id="creating-a-website" class="slide level2">
+<h2>Creating a website</h2>
+</section>
+<section id="author-books" class="slide level2">
+<h2>Author books</h2>
 </section>
 <section id="include-javascript-libraries" class="slide level2">
 <h2>Include javascript libraries</h2>
 </section>
 <section id="create-dashboards-with-shiny-backends" class="slide level2">
 <h2>Create dashboards (with shiny backends)</h2>
+</section>
+<section id="more-resources-if-you-dig-quarto" class="slide level2">
+<h2>More resources if you dig Quarto</h2>
+<ul>
+<li>Official Quarto website: <a href="https://quarto.org/docs/get-started/">quarto.org/docs/get-started</a></li>
+<li>“Hello, Quarto” slides by Julia Lowndes &amp; Mine Çetinkaya Rundel: <a href="https://mine.quarto.pub/hello-quarto/">mine.quarto.pub/hello-quarto/</a></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><br></p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Get in touch if you want Quarto coaching</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><a href="https://www.tidy-intelligence.com/coaching.html">tidy-intelligence.com/coaching.html</a></li>
+<li><a href="https://www.linkedin.com/in/christophscheuch/">linkedin.com/in/christophscheuch</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/img/qr_code.png"></p>
+<figcaption>QR code for slides</figcaption>
+</figure>
+</div>
+</div>
+</div>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 

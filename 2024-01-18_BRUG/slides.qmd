@@ -3,7 +3,7 @@ title: "Unlocking Advanced Publishing Capabilities with Quarto"
 subtitle: "Berlin R Users Group Meetup #50"
 author: "Christoph Scheuch"
 execute:
-  cache: false
+  cache: true
 format:
   revealjs:
     transition: fade
@@ -14,46 +14,74 @@ format:
     # width: 1600
 ---
 
-## About me
+## About me 
 
-- Head of Artificial Intelligence at [wikifolio.com](https://www.wikifolio.com/en/int/home) (currently on sabbatical)
+::: columns
+::: {.column width="70%"}
+
+<br>
+<br>
+
+- Head of AI at [wikifolio.com](https://www.wikifolio.com/en/int/home)
 - Co-author & maintainer of [tidy-finance.org](https://www.tidy-finance.org/)
-- Content Creator at [tidy-intelligence.com](https://www.tidy-intelligence.com/)
-- Occasional t-shirt & mug designer at [TidySwag](https://www.etsy.com/shop/tidyswag/)
+- Content creator at [tidy-intelligence.com](https://www.tidy-intelligence.com/)
+- T-shirt & mug designer at [TidySwag](https://www.etsy.com/shop/tidyswag/)
+:::
 
-INSERT IMAGE WITH DIFFERENT LOGOS ON THE RIGHT
+::: {.column width="30%"}
+
+![](assets/img/about_me_logos.png)
+:::
+
+:::
 
 # What is Quarto?
 
 ## An open-source, scientific & technical publishing system
 
+<br>
+
 ![Quarto Schematic, Artwork by Allison Horst.](assets/img/horst_quarto_schematic.png)
 
-## Weave together narrative and code
+## Weave together narrative & code
 
 Produce elegantly formatted output as documents, web pages, blog posts, books and more 
+
+<br>
+<br>
+
+Using a variety of authoring tools!
 
 ![Quarto Authoring Tools.](assets/img/quarto_authoring_tools.png)
 
 
-## Just like Rmarkdown..
+## Just like Rmarkdown ...
 
 ... but much more powerful!
 
-- Consistent implementation of attractive and handy features across outputs: tabsets, code-folding, syntax highlighting, etc.
-- Defaults that meet accessibility guidelines as well as features that enable good practices for producing accessible documents
-- Natively multi-lingual, supporting for multiple languages like Python, Julia, Observable, and more via the Jupyter engine for executable code chunks
+<br>
+
+- **Consistent implementation** of attractive & handy features across outputs: tabsets, code-folding, syntax highlighting, etc.
+- Features & defaults that enable good practices for producing **accessible documents**
+- Natively **multi-lingual**, supporting for multiple languages like Python, Julia, Observable
 
 ## Illustration of Quarto 
 
+<br>
+
 ![Quarto Schematic, Artwork by Allison Horst.](assets/img/horst_qmd_render_schema.png)
 
-## What happens under the hood?
+## What happens under the hood?{.smaller}
 
-- knitr or jupyter evaluates R/Python/Julia code and returns a .md file along with the evaluated code
-- Quarto applies Lua filters + CSS/LaTeX which is then evaluated alongside the .md file by Pandoc and converted to a final output format
+`knitr`: R package for dynamic report generation
 
-## Move between formats easily
+`jupyter`: popular notebook authoring tool in Python community
+
+`pandoc` is a command line markup format converter 
+
+![Illusration by Christoph Scheuch.](assets/img/quarto_process_breakdown.png)
+
+## Move between formats easily {.smaller}
 
 ::: columns
 ::: {.column width="33%"}
@@ -61,7 +89,7 @@ Produce elegantly formatted output as documents, web pages, blog posts, books an
 Document
 
 ::: {.code-file .sourceCode .cell-code}
-{{< fa file >}} document.qmd
+ {{< fa file >}} document.qmd
 :::
 
 ``` yaml
@@ -76,7 +104,7 @@ format: pdf
 Presentation
 
 ::: {.code-file .sourceCode .cell-code}
-{{< fa file >}} slides.qmd
+ {{< fa file >}} slides.qmd
 :::
 
 ``` yaml
@@ -88,10 +116,25 @@ format: revealjs
 
 ::: {.column width="33%"}
 ::: fragment
+Dashboard
+
+::: {.code-file .sourceCode .cell-code}
+ {{< fa file >}} dashboard.qmd
+:::
+
+``` yaml
+project:
+  type: dashboard
+```
+:::
+:::
+
+::: {.column width="33%"}
+::: fragment
 Website
 
 ::: {.code-file .sourceCode .cell-code}
-{{< fa file >}} _quarto.yml
+ {{< fa file >}} _quarto.yml
 :::
 
 ``` yaml
@@ -105,6 +148,28 @@ website:
 ```
 :::
 :::
+
+::: {.column width="33%"}
+::: fragment
+Book
+
+::: {.code-file .sourceCode .cell-code}
+ {{< fa file >}} _quarto.yml
+:::
+
+``` yaml
+project:
+  type: book
+
+book:
+  title: "My Book"
+  author: "Jane Doe"
+  date: "18/01/2024"
+  chapters:
+    - index.qmd
+```
+:::
+:::
 :::
 
 ## Where does the term "Quarto" come from?
@@ -112,113 +177,167 @@ website:
 ```{=html}
 <iframe src="https://en.wikipedia.org/wiki/Quarto" title = "Quarto on Wikipedia" frameborder="1" height="100%" width="100%"></iframe>
 ```
-::: aside
-Source: <https://en.wikipedia.org/wiki/Quarto>
+
+# Quarto showcases
+
+## Create a quarto document{.smaller}
+
+::: {.code-file .sourceCode .cell-code}
+ {{< fa file >}} dummy.qmd
 :::
 
-# Showcasing some example
+```` markdown
+---
+title: "A Dummy Document"
+author: "Christoph Scheuch"
+format: html
+---
 
-## Include code & plot with R
+## This is a headline
+
+Here goes some code:
+
+```{{r}}
+1 + 1
+```
+
+You can add options to executable code like this 
+
+```{{r}}
+#| eval: true
+#| output: false
+2 * 2
+```
+
+````
+
+## This is what the rendered HTML looks like
+
+![](assets/img/dummy_document_html.png)
+
+
+## This is what the rendered PDF looks like
+
+![](assets/img/dummy_document_pdf.png)
+
+## Creating a presentation{.smaller}
+
+::: {.code-file .sourceCode .cell-code}
+ {{< fa file >}} slides.qmd
+:::
+
+```` markdown
+---
+title: "Unlocking Advanced Publishing Capabilities with Quarto"
+subtitle: "Berlin R Users Group Meetup #50"
+author: "Christoph Scheuch"
+execute:
+  cache: true
+format:
+  revealjs:
+    transition: fade
+    slide-number: true
+    chalkboard: false
+    theme: slides.scss
+---
+
+## About me
+
+- Head of Artificial Intelligence at [wikifolio.com](https://www.wikifolio.com/en/int/home)
+````
+
+See [https://github.com/tidy-intelligence/talks](https://github.com/tidy-intelligence/talks) for full slides & code
+
+## Include code & plot with R{.smaller}
 
 ```{r}
+#| echo: true
+#| fig-align: center
 library(ggplot2)
 library(palmerpenguins)
 
-penguins <- na.omit(palmerpenguins::penguins)
+penguins <- palmerpenguins::penguins
 
 ggplot(penguins,
-       aes(x = bill_length_mm, y = bill_depth_mm,
-           color = species, shape = species)) +
+       aes(x = bill_length_mm, y = bill_depth_mm, color = species, shape = species)) +
   geom_point() +
   geom_smooth(method = "lm") +
   labs(x = "Bill length (mm)", y = "Bill Width (mm)",
-       title = "Bill Length vs. Bill Width",
-       subtitle = "Using geom_point and geom_smooth",
-       color = "Species", shape = "Species") +
-  theme_minimal()
+       title = "Bill Length vs. Bill Width", color = "Species", shape = "Species") 
 ```
 
-## Replicate the same with Python
+## Replicate the same with Python{.smaller}
 
 ```{python}
+#| echo: true
+#| fig-align: center
 from plotnine import *
 from palmerpenguins import load_penguins
 
-penguins = load_penguins().dropna()
+penguins = load_penguins()
 
 (ggplot(penguins, 
-        aes(x = "bill_length_mm", y = "bill_depth_mm", 
-            color = "species", shape = "species"))
+        aes(x = "bill_length_mm", y = "bill_depth_mm", color = "species", shape = "species"))
   + geom_point()
   + geom_smooth(method = "lm")
   + labs(x = "Bill Length (mm)", y = "Bill Width (mm)", 
-         title = "Bill Length vs. Bill Width", 
-         subtitle = "Using geom_point and geom_smooth",
-         color = "Species", shape = "Species")
-  + theme_minimal()
-)
+         title = "Bill Length vs. Bill Width", color = "Species", shape = "Species"))
 ```
 
-## Tabs to switch between languages
+## Tabs to switch between languages{.smaller}
 
 ::: {.panel-tabset}
 ### R
 ```{r}
+#| echo: true
+#| output: false
 library(ggplot2)
 library(palmerpenguins)
 
-penguins <- na.omit(palmerpenguins::penguins)
+penguins <- palmerpenguins::penguins
 
 ggplot(penguins,
-       aes(x = bill_length_mm, y = bill_depth_mm,
-           color = species, shape = species)) +
+       aes(x = bill_length_mm, y = bill_depth_mm, color = species, shape = species)) +
   geom_point() +
   geom_smooth(method = "lm") +
   labs(x = "Bill length (mm)", y = "Bill Width (mm)",
-       title = "Bill Length vs. Bill Width",
-       subtitle = "Using geom_point and geom_smooth",
-       color = "Species", shape = "Species") +
-  theme_minimal()
+       title = "Bill Length vs. Bill Width", color = "Species", shape = "Species") 
 ```
 
 ### Python
 ```{python}
+#| echo: true
+#| output: false
 from plotnine import *
 from palmerpenguins import load_penguins
 
-penguins = load_penguins().dropna()
+penguins = load_penguins()
 
-penguins_plot = (ggplot(penguins, 
-        aes(x = "bill_length_mm", y = "bill_depth_mm", 
-            color = "species", shape = "species"))
+(ggplot(penguins, 
+        aes(x = "bill_length_mm", y = "bill_depth_mm", color = "species", shape = "species"))
   + geom_point()
   + geom_smooth(method = "lm")
   + labs(x = "Bill Length (mm)", y = "Bill Width (mm)", 
-         title = "Bill Length vs. Bill Width", 
-         subtitle = "Using geom_point and geom_smooth",
-         color = "Species", shape = "Species")
-  + theme_minimal()
-)
-penguins_plot.draw()
+         title = "Bill Length vs. Bill Width", color = "Species", shape = "Species"))
 ```
-### Julia
-```{julia}
-using Plots, DataFrames, StatsPlots, PalmerPenguins
+<!-- ### Julia -->
+<!-- ```{julia} -->
+<!-- using Plots, DataFrames, StatsPlots, PalmerPenguins -->
 
-penguins = dropmissing(DataFrame(PalmerPenguins.load()));
+<!-- penguins = dropmissing(DataFrame(PalmerPenguins.load())); -->
 
-scatter(
-  penguins.bill_length_mm, penguins.bill_depth_mm, 
-  group = penguins.species,
-  xlabel = "Bill length (mm)", ylabel = "Bill Width (mm)",
-  title = "Bill Length vs. Bill Width",
-  subtitle = "Using scatter and lm",
-  legend = :outerright,
-  markershape = :auto, 
-  regression = true,
-  size = (670, 480)
-)
-```
+<!-- scatter( -->
+<!--   penguins.bill_length_mm, penguins.bill_depth_mm,  -->
+<!--   group = penguins.species, -->
+<!--   xlabel = "Bill length (mm)", ylabel = "Bill Width (mm)", -->
+<!--   title = "Bill Length vs. Bill Width", -->
+<!--   subtitle = "Using scatter and lm", -->
+<!--   legend = :outerright, -->
+<!--   markershape = :auto,  -->
+<!--   regression = true, -->
+<!--   size = (670, 480) -->
+<!-- ) -->
+<!-- ``` -->
 
 :::
 
@@ -228,10 +347,45 @@ scatter(
 <iframe src="https://blog.tidy-intelligence.com/" title = "Tidy Intelligence Blog" frameborder="1" height="100%" width="100%"></iframe>
 ```
 
-## How is it possible to render multiple languages?
+## Wait, how is this possible?
 
-CREATE ILLUSTRATION OF KNITR USING DIFFERENT LANGUAGE BACKENDS
+Multiple languages in same doc through `knitr`'s capabilities
+
+![Illusration by Christoph Scheuch.](assets/img/knitr_process_breakdown.png)
+
+## Creating a website
+
+
+## Author books
+
 
 ## Include javascript libraries
 
+
 ## Create dashboards (with shiny backends)
+
+## More resources if you dig Quarto
+
+- Official Quarto website: [quarto.org/docs/get-started](https://quarto.org/docs/get-started/)
+- "Hello, Quarto" slides by Julia Lowndes & Mine Çetinkaya Rundel: [mine.quarto.pub/hello-quarto/](https://mine.quarto.pub/hello-quarto/)
+
+::: columns
+::: {.column width="60%"}
+
+<br>
+
+::: {.callout-tip}
+## Get in touch if you want Quarto coaching
+
+- [tidy-intelligence.com/coaching.html](https://www.tidy-intelligence.com/coaching.html)
+- [linkedin.com/in/christophscheuch](https://www.linkedin.com/in/christophscheuch/)
+:::
+:::
+
+::: {.column width="40%"}
+![QR code for slides](assets/img/qr_code.png)
+:::
+
+:::
+
+
