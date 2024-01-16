@@ -67,7 +67,7 @@ Using a variety of authoring tools!
 
 - **Consistent implementation** of attractive & handy features across outputs: tabsets, code-folding, syntax highlighting, etc.
 - Features & defaults that enable good practices for producing **accessible documents**
-- Natively **multi-lingual**, supporting for multiple languages like Python, Julia, Observable
+- Natively **multi-lingual**, supporting multiple languages (R, Python, Julia, Observable)
 
 ## Illustration of Quarto 
 
@@ -367,7 +367,7 @@ See simple example: [christophscheuch.github.io](https://christophscheuch.github
 
 Easy to publish via [GitHub Pages](https://quarto.org/docs/publishing/github-pages.html)
 
-## Author books
+## Creating books
 
 Official Quarto tutorial: [quarto.org/docs/books](https://quarto.org/docs/books/)
 
@@ -377,7 +377,7 @@ Great example: [R for Data Science (2e)](https://r4ds.hadley.nz/)
 
 Code availble on [Hadley's GitHub](https://github.com/hadley/r4ds)
 
-## Create dashboards
+## Creating dashboards
 
 Official Quarto tutorial: [quarto.org/docs/dashboards](https://quarto.org/docs/dashboards/)
 
