@@ -8,13 +8,17 @@ format:
   revealjs:
     transition: fade
     slide-number: true
-    chalkboard: false
+    chalkboard: false 
     theme: slides.scss
-    # height: 900
-    # width: 1600
+    include-in-header: 
+      - assets/html/header-particles.html
+    include-after-body:
+      - assets/html/bottom-particles.html
+    css: 
+      - assets/css/styles.css
 ---
 
-## About me 
+## About me
 
 ::: columns
 ::: {.column width="70%"}
@@ -355,14 +359,59 @@ Multiple languages in same doc through `knitr`'s capabilities
 
 ## Creating a website
 
+Official Quarto tutorial: [quarto.org/docs/websites](https://quarto.org/docs/websites/)
+
+![](assets/img/create_website.png)
+
+See simple example: [christophscheuch.github.io](https://christophscheuch.github.io/)
+
+Easy to publish via [GitHub Pages](https://quarto.org/docs/publishing/github-pages.html)
 
 ## Author books
 
+Official Quarto tutorial: [quarto.org/docs/books](https://quarto.org/docs/books/)
 
-## Include javascript libraries
+![](assets/img/create_book.png)
 
+Great example: [R for Data Science (2e)](https://r4ds.hadley.nz/)
 
-## Create dashboards (with shiny backends)
+Code availble on [Hadley's GitHub](https://github.com/hadley/r4ds)
+
+## Create dashboards
+
+Official Quarto tutorial: [quarto.org/docs/dashboards](https://quarto.org/docs/dashboards/)
+
+Simple example dashboard: [colorado.posit.co/rsc/nz-quakes/quakes.html](https://colorado.posit.co/rsc/nz-quakes/quakes.html)
+
+<br>
+Key features:
+
+- Supports static (`ggplot2`, `seaborn`, `matplotlib`, etc.) & dynamic plots (`plotly`, `leaflet`, `htmlwidgets`, etc.)
+- Can be deployed as static html content or with dynamic `shiny` server backend 
+
+## Advanced stuff: include javascript libraries{.smaller}
+
+````markdown 
+format:
+  revealjs:
+    ...
+    include-in-header: 
+      - assets/html/header-particles.html
+    include-after-body:
+      - assets/html/bottom-particles.html
+    css: 
+      - assets/css/styles.css
+---
+
+::: {#particles-js}
+:::
+
+````
+
+::: {#particles-js}
+:::
+
+# Conclusion
 
 ## More resources if you dig Quarto
 

@@ -98,6 +98,7 @@
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
   <link href="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -387,6 +388,8 @@
       margin-right: 0; 
     }
   </style>
+  <script src="assets/js/particles.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -693,15 +696,51 @@ Christoph Scheuch
 <img data-src="assets/img/knitr_process_breakdown.png" class="r-stretch quarto-figure-center"><p class="caption">Illusration by Christoph Scheuch.</p></section>
 <section id="creating-a-website" class="slide level2">
 <h2>Creating a website</h2>
+<p>Official Quarto tutorial: <a href="https://quarto.org/docs/websites/">quarto.org/docs/websites</a></p>
+
+<img data-src="assets/img/create_website.png" class="r-stretch"><p>See simple example: <a href="https://christophscheuch.github.io/">christophscheuch.github.io</a></p>
+<p>Easy to publish via <a href="https://quarto.org/docs/publishing/github-pages.html">GitHub Pages</a></p>
 </section>
 <section id="author-books" class="slide level2">
 <h2>Author books</h2>
+<p>Official Quarto tutorial: <a href="https://quarto.org/docs/books/">quarto.org/docs/books</a></p>
+
+<img data-src="assets/img/create_book.png" class="r-stretch"><p>Great example: <a href="https://r4ds.hadley.nz/">R for Data Science (2e)</a></p>
+<p>Code availble on <a href="https://github.com/hadley/r4ds">Hadley’s GitHub</a></p>
 </section>
-<section id="include-javascript-libraries" class="slide level2">
-<h2>Include javascript libraries</h2>
+<section id="create-dashboards" class="slide level2">
+<h2>Create dashboards</h2>
+<p>Official Quarto tutorial: <a href="https://quarto.org/docs/dashboards/">quarto.org/docs/dashboards</a></p>
+<p>Simple example dashboard: <a href="https://colorado.posit.co/rsc/nz-quakes/quakes.html">colorado.posit.co/rsc/nz-quakes/quakes.html</a></p>
+<p><br> Key features:</p>
+<ul>
+<li>Supports static (<code>ggplot2</code>, <code>seaborn</code>, <code>matplotlib</code>, etc.) &amp; dynamic plots (<code>plotly</code>, <code>leaflet</code>, <code>htmlwidgets</code>, etc.)</li>
+<li>Can be deployed as static html content or with dynamic <code>shiny</code> server backend</li>
+</ul>
 </section>
-<section id="create-dashboards-with-shiny-backends" class="slide level2">
-<h2>Create dashboards (with shiny backends)</h2>
+<section id="advanced-stuff-include-javascript-libraries" class="slide level2 smaller">
+<h2>Advanced stuff: include javascript libraries</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href=""></a><span class="an">format:</span></span>
+<span id="cb13-2"><a href=""></a>  revealjs:</span>
+<span id="cb13-3"><a href=""></a>    ...</span>
+<span id="cb13-4"><a href=""></a>    include-in-header: </span>
+<span id="cb13-5"><a href=""></a><span class="ss">      - </span>assets/html/header-particles.html</span>
+<span id="cb13-6"><a href=""></a>    include-after-body:</span>
+<span id="cb13-7"><a href=""></a><span class="ss">      - </span>assets/html/bottom-particles.html</span>
+<span id="cb13-8"><a href=""></a>    css: </span>
+<span id="cb13-9"><a href=""></a><span class="ss">      - </span>assets/css/styles.css</span>
+<span id="cb13-10"><a href=""></a>---</span>
+<span id="cb13-11"><a href=""></a></span>
+<span id="cb13-12"><a href=""></a>::: {#particles-js}</span>
+<span id="cb13-13"><a href=""></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="particles-js">
+
+</div>
+</section></section>
+<section>
+<section id="conclusion" class="title-slide slide level1 center">
+<h1>Conclusion</h1>
+
 </section>
 <section id="more-resources-if-you-dig-quarto" class="slide level2">
 <h2>More resources if you dig Quarto</h2>
@@ -952,6 +991,120 @@ Christoph Scheuch
           RevealZoom
         ]
       });
+    </script>
+    <script>
+      particlesJS('particles-js',
+        {
+        "particles": {
+          "number": {
+            "value": 160,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#ffffff"
+          },
+          "shape": {
+            "type": "circle",
+            "stroke": {
+              "width": 0,
+              "color": "#000000"
+            },
+            "polygon": {
+              "nb_sides": 5
+            },
+            "image": {
+              "src": "img/github.svg",
+              "width": 100,
+              "height": 100
+            }
+          },
+          "opacity": {
+            "value": 1,
+            "random": true,
+            "anim": {
+              "enable": true,
+              "speed": 1,
+              "opacity_min": 0,
+              "sync": false
+            }
+          },
+          "size": {
+            "value": 6,
+            "random": true,
+            "anim": {
+              "enable": false,
+              "speed": 4,
+              "size_min": 0.3,
+              "sync": false
+            }
+          },
+          "line_linked": {
+            "enable": false,
+            "distance": 150,
+            "color": "#ffffff",
+            "opacity": 0.4,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 1,
+            "direction": "none",
+            "random": true,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+              "enable": false,
+              "rotateX": 600,
+              "rotateY": 600
+            }
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "bubble"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "repulse"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 400,
+              "line_linked": {
+                "opacity": 1
+              }
+            },
+            "bubble": {
+              "distance": 250,
+              "size": 0,
+              "duration": 2,
+              "opacity": 0,
+              "speed": 3
+            },
+            "repulse": {
+              "distance": 400,
+              "duration": 0.4
+            },
+            "push": {
+              "particles_nb": 4
+            },
+            "remove": {
+              "particles_nb": 2
+            }
+          }
+        },
+        "retina_detect": true
+      }
+      );
     </script>
     
     <script>

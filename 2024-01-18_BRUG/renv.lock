@@ -14,6 +14,20 @@
     "Name": "./renv/python/virtualenvs/renv-python-3.10"
   },
   "Packages": {
+    "JuliaCall": {
+      "Package": "JuliaCall",
+      "Version": "0.17.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "Rcpp",
+        "knitr",
+        "rjson",
+        "utils"
+      ],
+      "Hash": "3fc7235465a350731873abfe58fed1b9"
+    },
     "MASS": {
       "Package": "MASS",
       "Version": "7.3-60",
@@ -64,6 +78,17 @@
         "R"
       ],
       "Hash": "45f0398006e83a5b10b72a90663d8d8c"
+    },
+    "Rcpp": {
+      "Package": "Rcpp",
+      "Version": "1.0.12",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "methods",
+        "utils"
+      ],
+      "Hash": "5ea2700d21e038ace58269ecdbeb9ec0"
     },
     "base64enc": {
       "Package": "base64enc",
@@ -508,6 +533,16 @@
         "utils"
       ],
       "Hash": "41b847654f567341725473431dd0d5ab"
+    },
+    "rjson": {
+      "Package": "rjson",
+      "Version": "0.2.21",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "f9da75e6444e95a1baf8ca24909d63b9"
     },
     "rlang": {
       "Package": "rlang",
