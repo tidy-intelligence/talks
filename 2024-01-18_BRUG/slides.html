@@ -438,12 +438,13 @@ Christoph Scheuch
 <h2>Weave together narrative &amp; code</h2>
 <p>Produce elegantly formatted output as documents, web pages, blog posts, books and more</p>
 <p><br> <br></p>
-<p>Using a variety of authoring tools!</p>
+<p>Using a variety of authoring tools:</p>
 
 <img data-src="assets/img/quarto_authoring_tools.png" class="r-stretch quarto-figure-center"><p class="caption">Quarto Authoring Tools.</p></section>
 <section id="just-like-rmarkdown" class="slide level2">
 <h2>Just like Rmarkdown …</h2>
-<p>… but much more powerful!</p>
+<p><br></p>
+<p>… but much more <strong>powerful</strong>!</p>
 <p><br></p>
 <ul>
 <li><strong>Consistent implementation</strong> of attractive &amp; handy features across outputs: tabsets, code-folding, syntax highlighting, etc.</li>
@@ -518,10 +519,10 @@ Christoph Scheuch
 <span id="cb5-3"><a href=""></a></span>
 <span id="cb5-4"><a href=""></a><span class="fu">book</span><span class="kw">:</span></span>
 <span id="cb5-5"><a href=""></a><span class="at">  </span><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Book"</span></span>
-<span id="cb5-6"><a href=""></a><span class="at">  </span><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Jane Doe"</span></span>
+<span id="cb5-6"><a href=""></a><span class="at">  </span><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Christoph Scheuch"</span></span>
 <span id="cb5-7"><a href=""></a><span class="at">  </span><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"18/01/2024"</span></span>
 <span id="cb5-8"><a href=""></a><span class="at">  </span><span class="fu">chapters</span><span class="kw">:</span></span>
-<span id="cb5-9"><a href=""></a><span class="at">    </span><span class="kw">-</span><span class="at"> index.qmd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-9"><a href=""></a><span class="at">    </span><span class="kw">-</span><span class="at"> chapter-one.qmd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -585,13 +586,12 @@ Christoph Scheuch
 <span id="cb7-8"><a href=""></a><span class="co">  revealjs:</span></span>
 <span id="cb7-9"><a href=""></a><span class="co">    transition: fade</span></span>
 <span id="cb7-10"><a href=""></a><span class="co">    slide-number: true</span></span>
-<span id="cb7-11"><a href=""></a><span class="co">    chalkboard: false</span></span>
-<span id="cb7-12"><a href=""></a><span class="co">    theme: slides.scss</span></span>
-<span id="cb7-13"><a href=""></a><span class="co">---</span></span>
-<span id="cb7-14"><a href=""></a></span>
-<span id="cb7-15"><a href=""></a><span class="fu">## About me</span></span>
-<span id="cb7-16"><a href=""></a></span>
-<span id="cb7-17"><a href=""></a><span class="ss">- </span>Head of Artificial Intelligence at <span class="co">[</span><span class="ot">wikifolio.com</span><span class="co">](https://www.wikifolio.com/en/int/home)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-11"><a href=""></a><span class="co">    theme: slides.scss</span></span>
+<span id="cb7-12"><a href=""></a><span class="co">---</span></span>
+<span id="cb7-13"><a href=""></a></span>
+<span id="cb7-14"><a href=""></a><span class="fu">## About me</span></span>
+<span id="cb7-15"><a href=""></a></span>
+<span id="cb7-16"><a href=""></a><span class="ss">- </span>Head of Artificial Intelligence at <span class="co">[</span><span class="ot">wikifolio.com</span><span class="co">](https://www.wikifolio.com/en/int/home)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>See <a href="https://github.com/tidy-intelligence/talks">https://github.com/tidy-intelligence/talks</a> for full slides &amp; code</p>
 </section>
 <section id="include-code-plot-with-r" class="slide level2 smaller">
@@ -634,7 +634,7 @@ Christoph Scheuch
 <section id="tabs-to-switch-between-languages" class="slide level2 smaller">
 <h2>Tabs to switch between languages</h2>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">R</a></li><li><a href="#tabset-1-2">Python</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">R</a></li><li><a href="#tabset-1-2">Python</a></li><li><a href="#tabset-1-3">Julia</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
 <div class="cell">
@@ -665,22 +665,25 @@ Christoph Scheuch
 <span id="cb12-10"><a href=""></a>  <span class="op">+</span> labs(x <span class="op">=</span> <span class="st">"Bill Length (mm)"</span>, y <span class="op">=</span> <span class="st">"Bill Width (mm)"</span>, </span>
 <span id="cb12-11"><a href=""></a>         title <span class="op">=</span> <span class="st">"Bill Length vs. Bill Width"</span>, color <span class="op">=</span> <span class="st">"Species"</span>, shape <span class="op">=</span> <span class="st">"Species"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<!-- ### Julia -->
-<!-- ```{julia} -->
-<!-- using Plots, DataFrames, StatsPlots, PalmerPenguins -->
-<!-- penguins = dropmissing(DataFrame(PalmerPenguins.load())); -->
-<!-- scatter( -->
-<!--   penguins.bill_length_mm, penguins.bill_depth_mm,  -->
-<!--   group = penguins.species, -->
-<!--   xlabel = "Bill length (mm)", ylabel = "Bill Width (mm)", -->
-<!--   title = "Bill Length vs. Bill Width", -->
-<!--   subtitle = "Using scatter and lm", -->
-<!--   legend = :outerright, -->
-<!--   markershape = :auto,  -->
-<!--   regression = true, -->
-<!--   size = (670, 480) -->
-<!-- ) -->
-<!-- ``` -->
+</div>
+<div id="tabset-1-3">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href=""></a><span class="im">using</span> <span class="bu">Plots</span>, <span class="bu">DataFrames</span>, <span class="bu">StatsPlots</span>, <span class="bu">PalmerPenguins</span></span>
+<span id="cb13-2"><a href=""></a></span>
+<span id="cb13-3"><a href=""></a>penguins <span class="op">=</span> <span class="fu">dropmissing</span>(<span class="fu">DataFrame</span>(PalmerPenguins.<span class="fu">load</span>()));</span>
+<span id="cb13-4"><a href=""></a></span>
+<span id="cb13-5"><a href=""></a><span class="fu">scatter</span>(</span>
+<span id="cb13-6"><a href=""></a>  penguins.bill_length_mm, penguins.bill_depth_mm,</span>
+<span id="cb13-7"><a href=""></a>  group <span class="op">=</span> penguins.species,</span>
+<span id="cb13-8"><a href=""></a>  xlabel <span class="op">=</span> <span class="st">"Bill length (mm)"</span>, ylabel <span class="op">=</span> <span class="st">"Bill Width (mm)"</span>,</span>
+<span id="cb13-9"><a href=""></a>  title <span class="op">=</span> <span class="st">"Bill Length vs. Bill Width"</span>,</span>
+<span id="cb13-10"><a href=""></a>  subtitle <span class="op">=</span> <span class="st">"Using scatter and lm"</span>,</span>
+<span id="cb13-11"><a href=""></a>  legend <span class="op">=</span> <span class="op">:</span>outerright,</span>
+<span id="cb13-12"><a href=""></a>  markershape <span class="op">=</span> <span class="op">:</span>auto,</span>
+<span id="cb13-13"><a href=""></a>  regression <span class="op">=</span> <span class="cn">true</span>,</span>
+<span id="cb13-14"><a href=""></a>  size <span class="op">=</span> (<span class="fl">670</span>, <span class="fl">480</span>)</span>
+<span id="cb13-15"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -720,19 +723,19 @@ Christoph Scheuch
 </section>
 <section id="advanced-stuff-include-javascript-libraries" class="slide level2 smaller">
 <h2>Advanced stuff: include javascript libraries</h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href=""></a><span class="an">format:</span></span>
-<span id="cb13-2"><a href=""></a>  revealjs:</span>
-<span id="cb13-3"><a href=""></a>    ...</span>
-<span id="cb13-4"><a href=""></a>    include-in-header: </span>
-<span id="cb13-5"><a href=""></a><span class="ss">      - </span>assets/html/header-particles.html</span>
-<span id="cb13-6"><a href=""></a>    include-after-body:</span>
-<span id="cb13-7"><a href=""></a><span class="ss">      - </span>assets/html/bottom-particles.html</span>
-<span id="cb13-8"><a href=""></a>    css: </span>
-<span id="cb13-9"><a href=""></a><span class="ss">      - </span>assets/css/styles.css</span>
-<span id="cb13-10"><a href=""></a>---</span>
-<span id="cb13-11"><a href=""></a></span>
-<span id="cb13-12"><a href=""></a>::: {#particles-js}</span>
-<span id="cb13-13"><a href=""></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href=""></a><span class="an">format:</span></span>
+<span id="cb14-2"><a href=""></a>  revealjs:</span>
+<span id="cb14-3"><a href=""></a>    ...</span>
+<span id="cb14-4"><a href=""></a>    include-in-header: </span>
+<span id="cb14-5"><a href=""></a><span class="ss">      - </span>assets/html/header-particles.html</span>
+<span id="cb14-6"><a href=""></a>    include-after-body:</span>
+<span id="cb14-7"><a href=""></a><span class="ss">      - </span>assets/html/bottom-particles.html</span>
+<span id="cb14-8"><a href=""></a>    css: </span>
+<span id="cb14-9"><a href=""></a><span class="ss">      - </span>assets/css/styles.css</span>
+<span id="cb14-10"><a href=""></a>---</span>
+<span id="cb14-11"><a href=""></a></span>
+<span id="cb14-12"><a href=""></a>::: {#particles-js}</span>
+<span id="cb14-13"><a href=""></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="particles-js">
 
 </div>

@@ -1,4 +1,4 @@
-# 2024-01-01 BRUG
+# 2024-01-18 BRUG
 
 ## References
 
@@ -26,5 +26,4 @@ Set-up for R and Julia
 1. `install.packages("JuliaCall")`
 2. `JuliaCall::install_julia(version = "latest")`
 - Installs Julia to "C:/Users/christoph.scheuch/AppData/Roaming/R/data/R/JuliaCall/julia/1.9.4/julia-1.9.4"
-3. `JuliaCall::julia_setup("C:/Users/christoph.scheuch/AppData/Roaming/R/data/R/JuliaCall/julia/1.9.4/julia-1.9.4")`
-3. JuliaCall::julia_setup("/Applications/Julia-1.9.app/Contents/Resources/julia/bin/") on Mac
+3. `JuliaCall::julia_setup("C:/Users/christoph.scheuch/AppData/Roaming/R/data/R/JuliaCall/julia/1.9.4/julia-1.9.4")` on Windows or `JuliaCall::julia_setup("/Applications/Julia-1.9.app/Contents/Resources/julia/bin/") `on Mac

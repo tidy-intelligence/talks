@@ -8,7 +8,6 @@ format:
   revealjs:
     transition: fade
     slide-number: true
-    chalkboard: false 
     theme: slides.scss
     include-in-header: 
       - assets/html/header-particles.html
@@ -54,14 +53,16 @@ Produce elegantly formatted output as documents, web pages, blog posts, books an
 <br>
 <br>
 
-Using a variety of authoring tools!
+Using a variety of authoring tools:
 
 ![Quarto Authoring Tools.](assets/img/quarto_authoring_tools.png)
 
 
 ## Just like Rmarkdown ...
 
-... but much more powerful!
+<br>
+
+... but much more **powerful**! 
 
 <br>
 
@@ -167,10 +168,10 @@ project:
 
 book:
   title: "My Book"
-  author: "Jane Doe"
+  author: "Christoph Scheuch"
   date: "18/01/2024"
   chapters:
-    - index.qmd
+    - chapter-one.qmd
 ```
 :::
 :::
@@ -241,7 +242,6 @@ format:
   revealjs:
     transition: fade
     slide-number: true
-    chalkboard: false
     theme: slides.scss
 ---
 
@@ -324,24 +324,26 @@ penguins = load_penguins()
   + labs(x = "Bill Length (mm)", y = "Bill Width (mm)", 
          title = "Bill Length vs. Bill Width", color = "Species", shape = "Species"))
 ```
-<!-- ### Julia -->
-<!-- ```{julia} -->
-<!-- using Plots, DataFrames, StatsPlots, PalmerPenguins -->
+### Julia
+```{julia}
+#| echo: true
+#| output: false
+using Plots, DataFrames, StatsPlots, PalmerPenguins
 
-<!-- penguins = dropmissing(DataFrame(PalmerPenguins.load())); -->
+penguins = dropmissing(DataFrame(PalmerPenguins.load()));
 
-<!-- scatter( -->
-<!--   penguins.bill_length_mm, penguins.bill_depth_mm,  -->
-<!--   group = penguins.species, -->
-<!--   xlabel = "Bill length (mm)", ylabel = "Bill Width (mm)", -->
-<!--   title = "Bill Length vs. Bill Width", -->
-<!--   subtitle = "Using scatter and lm", -->
-<!--   legend = :outerright, -->
-<!--   markershape = :auto,  -->
-<!--   regression = true, -->
-<!--   size = (670, 480) -->
-<!-- ) -->
-<!-- ``` -->
+scatter(
+  penguins.bill_length_mm, penguins.bill_depth_mm,
+  group = penguins.species,
+  xlabel = "Bill length (mm)", ylabel = "Bill Width (mm)",
+  title = "Bill Length vs. Bill Width",
+  subtitle = "Using scatter and lm",
+  legend = :outerright,
+  markershape = :auto,
+  regression = true,
+  size = (670, 480)
+)
+```
 
 :::
 
