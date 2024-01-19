@@ -327,6 +327,7 @@ penguins = load_penguins()
 ### Julia
 ```{julia}
 #| echo: true
+#| eval: false
 #| output: false
 using Plots, DataFrames, StatsPlots, PalmerPenguins
 
