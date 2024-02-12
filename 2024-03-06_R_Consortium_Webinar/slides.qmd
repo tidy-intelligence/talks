@@ -1,79 +1,246 @@
 ---
-title: "Unlocking Advanced Publishing Capabilities with Quarto"
-subtitle: "Berlin R Users Group Meetup #50"
+title: "Tidy Finance and Accessing Financial Data"
+subtitle: "R Consortium Webinar"
 author: "Christoph Scheuch"
-execute:
-  cache: true
+execute: 
+  echo: true
+  message: false
+  warning: false
 format:
   revealjs:
-    transition: fade
+    transition: fade 
     slide-number: true
-    theme: slides.scss
-    include-in-header: 
-      - assets/html/header-particles.html
-    include-after-body:
-      - assets/html/bottom-particles.html
-    css: 
-      - assets/css/styles.css
 ---
+
+```{r}
+#| echo: false
+library(tidyverse)
+```
+
 
 # What is Tidy Finance?
 
-## Tidy Finance is ...
+A **transparent**, **open-source** approach to financial economics research, featuring **multiple programming languages**
 
+* Learn about empirical applications using tidy principles
+* Teach students the importance of reproducible research
+* Contribute to reproducible finance via our blog
 
-##
+INSERT IMAGE OF TIDY FINANCE STARS
 
+## Why Tidy?
 
+Code should not just be correct, but also **easy to read**:
 
-# Accessing and Managing Financial Data with R
+1. Design of humans.
+2. Embrace functional programming.
+3. Compose simple functions.
+4. Reuse existing data structures.
 
-## Introduction
+Combined with **tidy data** and **reproducible workflows**
 
-- **Overview:** Importance of organizing financial data efficiently
-- **Challenges:** Handling various data formats and ensuring consistency
-- **Solution:** Utilizing R for streamlined data management
+## Example code chunks
 
-## Key R Packages and Initial Setup
+```{r}
+#| eval: false
+#| echo: true
+# Load packages
+library(tidyverse)
+library(tidyquant)
 
-- **R Packages:** `tidyverse`, `scales`, `frenchdata`, `readxl`, `googledrive`, `tidyquant`, `RSQLite`, `dbplyr`
-- **Date Range Definition:** 1960-01-01 to 2022-12-31 for historical analysis
+# Download symbols of DOW index
+symbols <- tq_index(x = "DOW") |> 
+  filter(company != "US DOLLAR")
 
-## Fama-French Data
+# Download prices of DOW index constituents
+prices <- tq_get(x = symbols, get = "stock.prices", 
+                 from = "2000-01-01", to = "2022-12-31")
 
-- **Source:** Kenneth French's finance data library
-- **Content:** Market, size, value factors, and risk-free rates
-- **Process:** Downloading, parsing, and formatting monthly and daily data
+# Calculate returns
+returns <- prices |>
+  group_by(symbol) |>
+  mutate(ret = adjusted / lag(adjusted) - 1) |>
+  select(symbol, date, ret) |>
+  drop_na(ret)
+```
+
+## Welcoming contributions
+
+INSERT IMAGE OF BLOG OVERVIEW
+
+## Maintainers of Tidy Finance
+
+INSERT IMAGES OF TIDY FINANCE TEAM
+
+# Accessing & Managing Financial Data
+
+## Importance of organizing data efficiently
+
+- **Challenge:** ensure consistency across various data sources
+- **Solution:** use R to import, prepare & store data in a database
+- **R Packages:** `tidyverse`, `tidyquant`, `frenchdata`, `readxl`, `googledrive`, `RSQLite`
+
+## Fama-French factors & portfolios
+
+```{r}
+library(frenchdata)
+
+factors_ff3_monthly_raw <- download_french_data("Fama/French 3 Factors")
+factors_ff3_monthly <- factors_ff3_monthly_raw$subsets$data[[1]] |>
+  mutate(
+    month = floor_date(ymd(str_c(date, "01")), "month"),
+    across(c(RF, `Mkt-RF`, SMB, HML), ~as.numeric(.) / 100),
+    .keep = "none"
+  ) |>
+  rename_with(str_to_lower) |>
+  rename(mkt_excess = `mkt-rf`) |>
+  select(month, everything())
+
+head(factors_ff3_monthly, 3)
+```
 
 ## q-Factors
 
-- **Introduction:** Alternative factor models like the q-factor model
-- **Source and Process:** Downloading and formatting q-factors from authors' website
+```{r}
+factors_q_monthly_link <-
+  "https://global-q.org/uploads/1/2/2/6/122679606/q5_factors_monthly_2022.csv"
 
-## Macroeconomic Predictors
+factors_q_monthly <- read_csv(factors_q_monthly_link) |>
+  mutate(month = ymd(str_c(year, month, "01", sep = "-"))) |>
+  select(-R_F, -R_MKT, -year) |>
+  rename_with(~ str_remove(., "R_")) |>
+  rename_with(~ str_to_lower(.)) |>
+  mutate(across(-month, ~ . / 100)) 
 
-- **Purpose:** Predictors for the equity premium
-- **Source:** Amit Goyal's website
-- **Variables:** Dividend price ratio, earnings price ratio, book-to-market ratio, etc.
+head(factors_q_monthly, 3)
+```
 
-## Other Macroeconomic Data
+## Macroeconomic predictors 
 
-- **Source:** Federal Reserve Economic Data (FRED)
-- **Example:** Downloading CPI data using `tidyquant` package
+```{r}
+#| eval: false
+library(readxl)
+library(googledrive)
 
-## Setting Up a Database
+macro_predictors_link <-
+  "https://docs.google.com/spreadsheets/d/1g4LOaRj4TvwJr9RIaA_nwrXXWTOy46bP"
 
-- **Goal:** Store and manage downloaded data
-- **Method:** Using SQLite with `RSQLite` and `dbplyr` for efficient data management
-- **Steps:** Creation, writing tables, and establishing remote connections
+drive_download(macro_predictors_link, path = "macro_predictors.xlsx")
 
-## Managing SQLite Databases
+macro_predictors <- read_xlsx("macro_predictors.xlsx", sheet = "Monthly") |> 
+  mutate(
+    # Several cleaning steps & variable transformations...
+  )
+```
 
-- **Maintenance:** Using the `VACUUM` command for optimizing database size
-- **Utility:** Listing all tables with `dbListTables()`
+```{r}
+#| echo: false
+library(readxl)
+library(googledrive)
+drive_deauth()
+macro_predictors_link <-
+  "https://docs.google.com/spreadsheets/d/1g4LOaRj4TvwJr9RIaA_nwrXXWTOy46bP"
 
-## Conclusion
+drive_download(
+  macro_predictors_link,
+  path = "macro_predictors.xlsx",
+  overwrite = TRUE
+)
+macro_predictors <- read_xlsx(
+  "macro_predictors.xlsx",
+  sheet = "Monthly"
+) |>
+  mutate(month = ym(yyyymm)) |>
+  mutate(across(where(is.character), as.numeric)) |>
+  mutate(
+    IndexDiv = Index + D12,
+    logret = log(IndexDiv) - log(lag(IndexDiv)),
+    Rfree = log(Rfree + 1),
+    rp_div = lead(logret - Rfree, 1), # Future excess market return
+    dp = log(D12) - log(Index), # Dividend Price ratio
+    dy = log(D12) - log(lag(Index)), # Dividend yield
+    ep = log(E12) - log(Index), # Earnings price ratio
+    de = log(D12) - log(E12), # Dividend payout ratio
+    tms = lty - tbl, # Term spread
+    dfy = BAA - AAA # Default yield spread
+  ) |>
+  select(month, rp_div, dp, dy, ep, de, svar, bm = `b/m`, ntis, tbl, lty, ltr,tms, dfy, infl) |>
+  drop_na()
+head(macro_predictors, 3)
+```
 
-- **Summary:** Efficient financial data management using R
-- **Future Work:** Leveraging the organized data for further financial analysis
 
+## Other macroeconomic data
+
+Example: Federal Reserve Economic Data (FRED)
+
+```{r}
+library(tidyquant)
+
+cpi_monthly <- tq_get("CPIAUCNS", get = "economic.data") |>
+  mutate(
+    month = floor_date(date, "month"),
+    cpi = price / price[month == max(month)],
+    .keep = "none"
+  )
+head(cpi_monthly, 3)
+```
+
+
+## Use SQLite database for storage
+
+```{r}
+#| eval: false
+library(RSQLite)
+library(dbplyr)
+
+# Create database
+tidy_finance <- dbConnect(
+  SQLite(), "tidy_finance_r.sqlite", extended_types = TRUE
+)
+
+# Write data to database
+dbWriteTable(
+  conn = tidy_finance, name = "factors_ff3_monthly", 
+  value = factors_ff3_monthly, overwrite = TRUE
+)
+
+# Load data from database
+tbl(tidy_finance, "factors_ff3_monthly") |> 
+  collect()
+```
+
+
+## Why SQLite?
+
+Pros: 
+- Lightweight, self-contained, serverless database engine
+- Great for education purposes or prototyping
+
+Cons:
+- Limitations with respect to very large data & concurrency
+- Transfer to other languages cumbersome
+
+## WRDS & Other Data Providers
+
+### Wharton Research Data Services (WRDS)
+
+- Popular provider of financial & economic data
+- Focus on academic audience & research applications
+- Access via `RPostgres` package
+- Main data used in Tidy Finance
+  - CRSP: historical monthly & daily returns for US stocks
+  - Compustat: historical accounting data for US companies
+  - Mergent FISD: characteristics of US corporate bonds
+  - TRACE: detailed US corporate bond transactions
+
+### Other data providers
+
+- Large ecosystem of alternative data providers
+- Growing collection of R packages on [tidy-finance.org](https://www.tidy-finance.org/r/other-data-providers.html)
+- Examples: `fredr`, `ecb`, `Rblpapi`, `Quandl`, `edgarWebR`, ...
+- Reach out via contact@tidy-finance.org if we missed something
+
+## Wraping-up
+
+INSERT PROMOTION OF tidyfinance R PACKAGE?
