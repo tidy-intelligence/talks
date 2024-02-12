@@ -1,0 +1,79 @@
+---
+title: "Unlocking Advanced Publishing Capabilities with Quarto"
+subtitle: "Berlin R Users Group Meetup #50"
+author: "Christoph Scheuch"
+execute:
+  cache: true
+format:
+  revealjs:
+    transition: fade
+    slide-number: true
+    theme: slides.scss
+    include-in-header: 
+      - assets/html/header-particles.html
+    include-after-body:
+      - assets/html/bottom-particles.html
+    css: 
+      - assets/css/styles.css
+---
+
+# What is Tidy Finance?
+
+## Tidy Finance is ...
+
+
+##
+
+
+
+# Accessing and Managing Financial Data with R
+
+## Introduction
+
+- **Overview:** Importance of organizing financial data efficiently
+- **Challenges:** Handling various data formats and ensuring consistency
+- **Solution:** Utilizing R for streamlined data management
+
+## Key R Packages and Initial Setup
+
+- **R Packages:** `tidyverse`, `scales`, `frenchdata`, `readxl`, `googledrive`, `tidyquant`, `RSQLite`, `dbplyr`
+- **Date Range Definition:** 1960-01-01 to 2022-12-31 for historical analysis
+
+## Fama-French Data
+
+- **Source:** Kenneth French's finance data library
+- **Content:** Market, size, value factors, and risk-free rates
+- **Process:** Downloading, parsing, and formatting monthly and daily data
+
+## q-Factors
+
+- **Introduction:** Alternative factor models like the q-factor model
+- **Source and Process:** Downloading and formatting q-factors from authors' website
+
+## Macroeconomic Predictors
+
+- **Purpose:** Predictors for the equity premium
+- **Source:** Amit Goyal's website
+- **Variables:** Dividend price ratio, earnings price ratio, book-to-market ratio, etc.
+
+## Other Macroeconomic Data
+
+- **Source:** Federal Reserve Economic Data (FRED)
+- **Example:** Downloading CPI data using `tidyquant` package
+
+## Setting Up a Database
+
+- **Goal:** Store and manage downloaded data
+- **Method:** Using SQLite with `RSQLite` and `dbplyr` for efficient data management
+- **Steps:** Creation, writing tables, and establishing remote connections
+
+## Managing SQLite Databases
+
+- **Maintenance:** Using the `VACUUM` command for optimizing database size
+- **Utility:** Listing all tables with `dbListTables()`
+
+## Conclusion
+
+- **Summary:** Efficient financial data management using R
+- **Future Work:** Leveraging the organized data for further financial analysis
+
