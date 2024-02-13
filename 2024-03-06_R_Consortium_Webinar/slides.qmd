@@ -2,14 +2,18 @@
 title: "Tidy Finance and Accessing Financial Data"
 subtitle: "R Consortium Webinar"
 author: "Christoph Scheuch"
+date: "March 6th, 2024"
 execute: 
   echo: true
   message: false
   warning: false
+  cache: true
 format:
   revealjs:
     transition: fade 
     slide-number: true
+    theme: assets/scss/slides.scss
+    css: assets/css/styles.css
 ---
 
 ```{r}
@@ -18,15 +22,15 @@ library(tidyverse)
 ```
 
 
-# What is Tidy Finance?
+## What is Tidy Finance?
 
 A **transparent**, **open-source** approach to financial economics research, featuring **multiple programming languages**
+
+![](assets/img/tidy-finance-r-cover.png){width=100%}
 
 * Learn about empirical applications using tidy principles
 * Teach students the importance of reproducible research
 * Contribute to reproducible finance via our blog
-
-INSERT IMAGE OF TIDY FINANCE STARS
 
 ## Why Tidy?
 
@@ -64,23 +68,37 @@ returns <- prices |>
   drop_na(ret)
 ```
 
-## Welcoming contributions
+## Welcoming contributions on our blog 
 
-INSERT IMAGE OF BLOG OVERVIEW
+![](assets/img/tidy-finance-blog-overview.png)
 
-## Maintainers of Tidy Finance
+## Maintainers of tidy-finance.org
 
-INSERT IMAGES OF TIDY FINANCE TEAM
+<br>
+<br>
+
+![](assets/img/tidy-finance-team.png) 
+
+## We also wrote books
+
+INSERT BOOK COVERS
 
 # Accessing & Managing Financial Data
 
 ## Importance of organizing data efficiently
 
 - **Challenge:** ensure consistency across various data sources
-- **Solution:** use R to import, prepare & store data in a database
-- **R Packages:** `tidyverse`, `tidyquant`, `frenchdata`, `readxl`, `googledrive`, `RSQLite`
+- **Solution:** 
+  - Use R to import, prepare & store data 
+  - Use SQLite to organize data in a database
+- **R Packages:** 
+  - Manipulation: `tidyverse`, 
+  - Import: `tidyquant`, `frenchdata`, `readxl`, 
+  - Storage: `RSQLite`
 
-## Fama-French factors & portfolios
+## Fama-French factors & portfolios{.smaller}
+
+Most popular data for asset pricing tests due to Fama and French (1993)
 
 ```{r}
 library(frenchdata)
@@ -96,12 +114,16 @@ factors_ff3_monthly <- factors_ff3_monthly_raw$subsets$data[[1]] |>
   rename(mkt_excess = `mkt-rf`) |>
   select(month, everything())
 
-head(factors_ff3_monthly, 3)
+print(factors_ff3_monthly, n = 5)
 ```
 
-## q-Factors
+## q-Factors{.smaller}
+
+Recent alternative to Fama-French data by Hou, Xue, and Zhang (2014)
 
 ```{r}
+library(readr)
+
 factors_q_monthly_link <-
   "https://global-q.org/uploads/1/2/2/6/122679606/q5_factors_monthly_2022.csv"
 
@@ -112,10 +134,12 @@ factors_q_monthly <- read_csv(factors_q_monthly_link) |>
   rename_with(~ str_to_lower(.)) |>
   mutate(across(-month, ~ . / 100)) 
 
-head(factors_q_monthly, 3)
+print(factors_q_monthly, n = 5)
 ```
 
-## Macroeconomic predictors 
+## Macroeconomic predictors{.smaller}
+
+Collection of variables for equity premium prediction (Welch & Goyal, 2008)
 
 ```{r}
 #| eval: false
@@ -164,29 +188,28 @@ macro_predictors <- read_xlsx(
   select(month, rp_div, dp, dy, ep, de, svar, bm = `b/m`, ntis, tbl, lty, ltr,tms, dfy, infl) |>
   drop_na()
 
-file.remove("macro_predictors.xlsx")
-head(macro_predictors, 3)
+print(macro_predictors, n = 5)
 ```
 
+## Other macroeconomic data{.smaller}
 
-## Other macroeconomic data
-
-Example: Federal Reserve Economic Data (FRED)
+10K data sets via Federal Reserve Economic Data (FRED) database 
 
 ```{r}
 library(tidyquant)
 
+# Example: consumer price index (CPI)
 cpi_monthly <- tq_get("CPIAUCNS", get = "economic.data") |>
   mutate(
     month = floor_date(date, "month"),
     cpi = price / price[month == max(month)],
     .keep = "none"
   )
-head(cpi_monthly, 3)
+print(cpi_monthly, n = 5)
 ```
 
 
-## Use SQLite database for storage
+## Use SQLite database for storage{.smaller}
 
 ```{r}
 #| eval: false
@@ -200,52 +223,72 @@ tidy_finance <- dbConnect(
 
 # Write data to database
 dbWriteTable(
-  conn = tidy_finance, name = "factors_ff3_monthly", 
-  value = factors_ff3_monthly, overwrite = TRUE
+  conn = tidy_finance, 
+  name = "factors_ff3_monthly", 
+  value = factors_ff3_monthly, 
+  overwrite = TRUE
 )
 
 # Load data from database
-tbl(tidy_finance, "factors_ff3_monthly") |> 
+factors_ff3_monthly <- tbl(tidy_finance, "factors_ff3_monthly") |> 
   collect()
 ```
 
 
 ## Why SQLite?
 
-Pros: 
+**Pros:**
+
 - Lightweight, self-contained, serverless database engine
 - Great for education purposes or prototyping
 
-Cons:
+**Cons:**
+
 - Limitations with respect to very large data & concurrency
-- Transfer to other languages cumbersome
+- Transfer to other languages cumbersome (e.g. Python)
 
-## WRDS & Other Data Providers
+# WRDS & Other Data Providers
 
-### Wharton Research Data Services (WRDS)
+## Wharton Research Data Services (WRDS)
 
 - Popular provider of financial & economic data
 - Focus on academic audience & research applications
 - Access via `RPostgres` package
 - Main data used in Tidy Finance
-  - CRSP: historical monthly & daily returns for US stocks
-  - Compustat: historical accounting data for US companies
-  - Mergent FISD: characteristics of US corporate bonds
-  - TRACE: detailed US corporate bond transactions
+  - **CRSP:** historical monthly & daily returns for US stocks
+  - **Compustat:** historical accounting data for US companies
+  - **Mergent FISD:** characteristics of US corporate bonds
+  - **TRACE:** detailed US corporate bond transactions
+  
+## Glimpse at historical stock data
 
-### Other data providers
+INSERT STOCKS BY LISTING EXCHANGE
+
+## Glimpse at historical bond data
+
+INSERT NUMBER OF BONDS OUTSTANDING
+
+## Other data providers
 
 - Large ecosystem of alternative data providers
 - Growing collection of R packages on [tidy-finance.org](https://www.tidy-finance.org/r/other-data-providers.html)
 - Examples: `fredr`, `ecb`, `Rblpapi`, `Quandl`, `edgarWebR`, ...
 - Reach out via contact@tidy-finance.org if we missed something
 
+INSERT SOME IMAGE
+
 ## Wraping-up
 
 INSERT PROMOTION OF tidyfinance R PACKAGE?
 
+- Read our open source material at tidy-finance.org
+- Get in touch for teaching materials (slides, solutions)
+- Contribute to mission of reproducible finance via our blog
+
 ```{r}
 #| echo: false
+#| output: false
+file.remove("macro_predictors.xlsx")
 file.remove("tidy_finance_r.sqlite")
 ```
 

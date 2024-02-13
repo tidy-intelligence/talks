@@ -96,6 +96,7 @@
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
   <link href="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -402,17 +403,17 @@ Christoph Scheuch
 </div>
 </div>
 
+  <p class="date">Invalid Date</p>
 </section>
-<section>
-<section id="what-is-tidy-finance" class="title-slide slide level1 center">
-<h1>What is Tidy Finance?</h1>
+<section id="what-is-tidy-finance" class="slide level2">
+<h2>What is Tidy Finance?</h2>
 <p>A <strong>transparent</strong>, <strong>open-source</strong> approach to financial economics research, featuring <strong>multiple programming languages</strong></p>
-<ul>
+
+<img data-src="assets/img/tidy-finance-r-cover.png" style="width:100.0%" class="r-stretch"><ul>
 <li>Learn about empirical applications using tidy principles</li>
 <li>Teach students the importance of reproducible research</li>
 <li>Contribute to reproducible finance via our blog</li>
 </ul>
-<p>INSERT IMAGE OF TIDY FINANCE STARS</p>
 </section>
 <section id="why-tidy" class="slide level2">
 <h2>Why Tidy?</h2>
@@ -448,14 +449,19 @@ Christoph Scheuch
 <span id="cb1-18"><a href=""></a>  <span class="fu">drop_na</span>(ret)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="welcoming-contributions" class="slide level2">
-<h2>Welcoming contributions</h2>
-<p>INSERT IMAGE OF BLOG OVERVIEW</p>
+<section id="welcoming-contributions-on-our-blog" class="slide level2">
+<h2>Welcoming contributions on our blog</h2>
+
+<img data-src="assets/img/tidy-finance-blog-overview.png" class="r-stretch"></section>
+<section id="maintainers-of-tidy-finance.org" class="slide level2">
+<h2>Maintainers of tidy-finance.org</h2>
+<p><br> <br></p>
+
+<img data-src="assets/img/tidy-finance-team.png" class="r-stretch"></section>
+<section id="we-also-wrote-books" class="slide level2">
+<h2>We also wrote books</h2>
+<p>INSERT BOOK COVERS</p>
 </section>
-<section id="maintainers-of-tidy-finance" class="slide level2">
-<h2>Maintainers of Tidy Finance</h2>
-<p>INSERT IMAGES OF TIDY FINANCE TEAM</p>
-</section></section>
 <section>
 <section id="accessing-managing-financial-data" class="title-slide slide level1 center">
 <h1>Accessing &amp; Managing Financial Data</h1>
@@ -465,12 +471,22 @@ Christoph Scheuch
 <h2>Importance of organizing data efficiently</h2>
 <ul>
 <li><strong>Challenge:</strong> ensure consistency across various data sources</li>
-<li><strong>Solution:</strong> use R to import, prepare &amp; store data in a database</li>
-<li><strong>R Packages:</strong> <code>tidyverse</code>, <code>tidyquant</code>, <code>frenchdata</code>, <code>readxl</code>, <code>googledrive</code>, <code>RSQLite</code></li>
+<li><strong>Solution:</strong>
+<ul>
+<li>Use R to import, prepare &amp; store data</li>
+<li>Use SQLite to organize data in a database</li>
+</ul></li>
+<li><strong>R Packages:</strong>
+<ul>
+<li>Manipulation: <code>tidyverse</code>,</li>
+<li>Import: <code>tidyquant</code>, <code>frenchdata</code>, <code>readxl</code>,</li>
+<li>Storage: <code>RSQLite</code></li>
+</ul></li>
 </ul>
 </section>
-<section id="fama-french-factors-portfolios" class="slide level2">
+<section id="fama-french-factors-portfolios" class="slide level2 smaller">
 <h2>Fama-French factors &amp; portfolios</h2>
+<p>Most popular data for asset pricing tests due to Fama and French (1993)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">library</span>(frenchdata)</span>
 <span id="cb2-2"><a href=""></a></span>
@@ -485,43 +501,53 @@ Christoph Scheuch
 <span id="cb2-11"><a href=""></a>  <span class="fu">rename</span>(<span class="at">mkt_excess =</span> <span class="st">`</span><span class="at">mkt-rf</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
 <span id="cb2-12"><a href=""></a>  <span class="fu">select</span>(month, <span class="fu">everything</span>())</span>
 <span id="cb2-13"><a href=""></a></span>
-<span id="cb2-14"><a href=""></a><span class="fu">head</span>(factors_ff3_monthly, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-14"><a href=""></a><span class="fu">print</span>(factors_ff3_monthly, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 5
+<pre><code># A tibble: 1,170 × 5
   month      mkt_excess     smb     hml     rf
   &lt;date&gt;          &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
 1 1926-07-01     0.0296 -0.0256 -0.0243 0.0022
 2 1926-08-01     0.0264 -0.0117  0.0382 0.0025
-3 1926-09-01     0.0036 -0.014   0.0013 0.0023</code></pre>
+3 1926-09-01     0.0036 -0.014   0.0013 0.0023
+4 1926-10-01    -0.0324 -0.0009  0.007  0.0032
+5 1926-11-01     0.0253 -0.001  -0.0051 0.0031
+# ℹ 1,165 more rows</code></pre>
 </div>
 </div>
 </section>
-<section id="q-factors" class="slide level2">
+<section id="q-factors" class="slide level2 smaller">
 <h2>q-Factors</h2>
+<p>Recent alternative to Fama-French data by Hou, Xue, and Zhang (2014)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>factors_q_monthly_link <span class="ot">&lt;-</span></span>
-<span id="cb4-2"><a href=""></a>  <span class="st">"https://global-q.org/uploads/1/2/2/6/122679606/q5_factors_monthly_2022.csv"</span></span>
-<span id="cb4-3"><a href=""></a></span>
-<span id="cb4-4"><a href=""></a>factors_q_monthly <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(factors_q_monthly_link) <span class="sc">|&gt;</span></span>
-<span id="cb4-5"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">ymd</span>(<span class="fu">str_c</span>(year, month, <span class="st">"01"</span>, <span class="at">sep =</span> <span class="st">"-"</span>))) <span class="sc">|&gt;</span></span>
-<span id="cb4-6"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>R_F, <span class="sc">-</span>R_MKT, <span class="sc">-</span>year) <span class="sc">|&gt;</span></span>
-<span id="cb4-7"><a href=""></a>  <span class="fu">rename_with</span>(<span class="sc">~</span> <span class="fu">str_remove</span>(., <span class="st">"R_"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb4-8"><a href=""></a>  <span class="fu">rename_with</span>(<span class="sc">~</span> <span class="fu">str_to_lower</span>(.)) <span class="sc">|&gt;</span></span>
-<span id="cb4-9"><a href=""></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="sc">-</span>month, <span class="sc">~</span> . <span class="sc">/</span> <span class="dv">100</span>)) </span>
-<span id="cb4-10"><a href=""></a></span>
-<span id="cb4-11"><a href=""></a><span class="fu">head</span>(factors_q_monthly, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">library</span>(readr)</span>
+<span id="cb4-2"><a href=""></a></span>
+<span id="cb4-3"><a href=""></a>factors_q_monthly_link <span class="ot">&lt;-</span></span>
+<span id="cb4-4"><a href=""></a>  <span class="st">"https://global-q.org/uploads/1/2/2/6/122679606/q5_factors_monthly_2022.csv"</span></span>
+<span id="cb4-5"><a href=""></a></span>
+<span id="cb4-6"><a href=""></a>factors_q_monthly <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(factors_q_monthly_link) <span class="sc">|&gt;</span></span>
+<span id="cb4-7"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">ymd</span>(<span class="fu">str_c</span>(year, month, <span class="st">"01"</span>, <span class="at">sep =</span> <span class="st">"-"</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb4-8"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>R_F, <span class="sc">-</span>R_MKT, <span class="sc">-</span>year) <span class="sc">|&gt;</span></span>
+<span id="cb4-9"><a href=""></a>  <span class="fu">rename_with</span>(<span class="sc">~</span> <span class="fu">str_remove</span>(., <span class="st">"R_"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb4-10"><a href=""></a>  <span class="fu">rename_with</span>(<span class="sc">~</span> <span class="fu">str_to_lower</span>(.)) <span class="sc">|&gt;</span></span>
+<span id="cb4-11"><a href=""></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="sc">-</span>month, <span class="sc">~</span> . <span class="sc">/</span> <span class="dv">100</span>)) </span>
+<span id="cb4-12"><a href=""></a></span>
+<span id="cb4-13"><a href=""></a><span class="fu">print</span>(factors_q_monthly, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 5
-  month          me       ia    roe      eg
-  &lt;date&gt;      &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
-1 1967-01-01 0.0683 -0.0297  0.0192 -0.0218
-2 1967-02-01 0.0165 -0.00227 0.0354  0.0222
-3 1967-03-01 0.0200 -0.0178  0.0184 -0.0104</code></pre>
+<pre><code># A tibble: 672 × 5
+  month            me       ia     roe       eg
+  &lt;date&gt;        &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+1 1967-01-01  0.0683  -0.0297  0.0192  -0.0218 
+2 1967-02-01  0.0165  -0.00227 0.0354   0.0222 
+3 1967-03-01  0.0200  -0.0178  0.0184  -0.0104 
+4 1967-04-01 -0.00690 -0.0288  0.0106  -0.0173 
+5 1967-05-01  0.0285   0.0252  0.00692  0.00158
+# ℹ 667 more rows</code></pre>
 </div>
 </div>
 </section>
-<section id="macroeconomic-predictors" class="slide level2">
+<section id="macroeconomic-predictors" class="slide level2 smaller">
 <h2>Macroeconomic predictors</h2>
+<p>Collection of variables for equity premium prediction (Welch &amp; Goyal, 2008)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">library</span>(readxl)</span>
 <span id="cb6-2"><a href=""></a></span>
@@ -538,40 +564,47 @@ Christoph Scheuch
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 15
+<pre><code># A tibble: 1,152 × 15
   month        rp_div    dp    dy    ep     de     svar    bm   ntis    tbl
   &lt;date&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
 1 1926-12-01 -0.0220  -2.97 -2.96 -2.39 -0.586 0.000465 0.441 0.0509 0.0307
 2 1927-01-01  0.0422  -2.94 -2.96 -2.37 -0.568 0.000470 0.444 0.0508 0.0323
 3 1927-02-01  0.00363 -2.98 -2.93 -2.43 -0.549 0.000287 0.429 0.0517 0.0329
+4 1927-03-01  0.0142  -2.98 -2.97 -2.45 -0.531 0.000924 0.470 0.0464 0.032 
+5 1927-04-01  0.0459  -2.98 -2.97 -2.47 -0.513 0.000603 0.457 0.0505 0.0339
+# ℹ 1,147 more rows
 # ℹ 5 more variables: lty &lt;dbl&gt;, ltr &lt;dbl&gt;, tms &lt;dbl&gt;, dfy &lt;dbl&gt;, infl &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </section>
-<section id="other-macroeconomic-data" class="slide level2">
+<section id="other-macroeconomic-data" class="slide level2 smaller">
 <h2>Other macroeconomic data</h2>
-<p>Example: Federal Reserve Economic Data (FRED)</p>
+<p>10K data sets via Federal Reserve Economic Data (FRED) database</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">library</span>(tidyquant)</span>
 <span id="cb8-2"><a href=""></a></span>
-<span id="cb8-3"><a href=""></a>cpi_monthly <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(<span class="st">"CPIAUCNS"</span>, <span class="at">get =</span> <span class="st">"economic.data"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb8-4"><a href=""></a>  <span class="fu">mutate</span>(</span>
-<span id="cb8-5"><a href=""></a>    <span class="at">month =</span> <span class="fu">floor_date</span>(date, <span class="st">"month"</span>),</span>
-<span id="cb8-6"><a href=""></a>    <span class="at">cpi =</span> price <span class="sc">/</span> price[month <span class="sc">==</span> <span class="fu">max</span>(month)],</span>
-<span id="cb8-7"><a href=""></a>    <span class="at">.keep =</span> <span class="st">"none"</span></span>
-<span id="cb8-8"><a href=""></a>  )</span>
-<span id="cb8-9"><a href=""></a><span class="fu">head</span>(cpi_monthly, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a href=""></a><span class="co"># Example: consumer price index (CPI)</span></span>
+<span id="cb8-4"><a href=""></a>cpi_monthly <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(<span class="st">"CPIAUCNS"</span>, <span class="at">get =</span> <span class="st">"economic.data"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-5"><a href=""></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-6"><a href=""></a>    <span class="at">month =</span> <span class="fu">floor_date</span>(date, <span class="st">"month"</span>),</span>
+<span id="cb8-7"><a href=""></a>    <span class="at">cpi =</span> price <span class="sc">/</span> price[month <span class="sc">==</span> <span class="fu">max</span>(month)],</span>
+<span id="cb8-8"><a href=""></a>    <span class="at">.keep =</span> <span class="st">"none"</span></span>
+<span id="cb8-9"><a href=""></a>  )</span>
+<span id="cb8-10"><a href=""></a><span class="fu">print</span>(cpi_monthly, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
+<pre><code># A tibble: 120 × 2
   month        cpi
   &lt;date&gt;     &lt;dbl&gt;
 1 2014-01-01 0.763
 2 2014-02-01 0.765
-3 2014-03-01 0.770</code></pre>
+3 2014-03-01 0.770
+4 2014-04-01 0.773
+5 2014-05-01 0.776
+# ℹ 115 more rows</code></pre>
 </div>
 </div>
 </section>
-<section id="use-sqlite-database-for-storage" class="slide level2">
+<section id="use-sqlite-database-for-storage" class="slide level2 smaller">
 <h2>Use SQLite database for storage</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">library</span>(RSQLite)</span>
@@ -584,46 +617,76 @@ Christoph Scheuch
 <span id="cb10-8"><a href=""></a></span>
 <span id="cb10-9"><a href=""></a><span class="co"># Write data to database</span></span>
 <span id="cb10-10"><a href=""></a><span class="fu">dbWriteTable</span>(</span>
-<span id="cb10-11"><a href=""></a>  <span class="at">conn =</span> tidy_finance, <span class="at">name =</span> <span class="st">"factors_ff3_monthly"</span>, </span>
-<span id="cb10-12"><a href=""></a>  <span class="at">value =</span> factors_ff3_monthly, <span class="at">overwrite =</span> <span class="cn">TRUE</span></span>
-<span id="cb10-13"><a href=""></a>)</span>
-<span id="cb10-14"><a href=""></a></span>
-<span id="cb10-15"><a href=""></a><span class="co"># Load data from database</span></span>
-<span id="cb10-16"><a href=""></a><span class="fu">tbl</span>(tidy_finance, <span class="st">"factors_ff3_monthly"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb10-17"><a href=""></a>  <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-11"><a href=""></a>  <span class="at">conn =</span> tidy_finance, </span>
+<span id="cb10-12"><a href=""></a>  <span class="at">name =</span> <span class="st">"factors_ff3_monthly"</span>, </span>
+<span id="cb10-13"><a href=""></a>  <span class="at">value =</span> factors_ff3_monthly, </span>
+<span id="cb10-14"><a href=""></a>  <span class="at">overwrite =</span> <span class="cn">TRUE</span></span>
+<span id="cb10-15"><a href=""></a>)</span>
+<span id="cb10-16"><a href=""></a></span>
+<span id="cb10-17"><a href=""></a><span class="co"># Load data from database</span></span>
+<span id="cb10-18"><a href=""></a>factors_ff3_monthly <span class="ot">&lt;-</span> <span class="fu">tbl</span>(tidy_finance, <span class="st">"factors_ff3_monthly"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-19"><a href=""></a>  <span class="fu">collect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="why-sqlite" class="slide level2">
 <h2>Why SQLite?</h2>
-<p>Pros: - Lightweight, self-contained, serverless database engine - Great for education purposes or prototyping</p>
-<p>Cons: - Limitations with respect to very large data &amp; concurrency - Transfer to other languages cumbersome</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Lightweight, self-contained, serverless database engine</li>
+<li>Great for education purposes or prototyping</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Limitations with respect to very large data &amp; concurrency</li>
+<li>Transfer to other languages cumbersome (e.g.&nbsp;Python)</li>
+</ul>
+</section></section>
+<section>
+<section id="wrds-other-data-providers" class="title-slide slide level1 center">
+<h1>WRDS &amp; Other Data Providers</h1>
+
 </section>
-<section id="wrds-other-data-providers" class="slide level2">
-<h2>WRDS &amp; Other Data Providers</h2>
-<h3 id="wharton-research-data-services-wrds">Wharton Research Data Services (WRDS)</h3>
+<section id="wharton-research-data-services-wrds" class="slide level2">
+<h2>Wharton Research Data Services (WRDS)</h2>
 <ul>
 <li>Popular provider of financial &amp; economic data</li>
 <li>Focus on academic audience &amp; research applications</li>
 <li>Access via <code>RPostgres</code> package</li>
 <li>Main data used in Tidy Finance
 <ul>
-<li>CRSP: historical monthly &amp; daily returns for US stocks</li>
-<li>Compustat: historical accounting data for US companies</li>
-<li>Mergent FISD: characteristics of US corporate bonds</li>
-<li>TRACE: detailed US corporate bond transactions</li>
+<li><strong>CRSP:</strong> historical monthly &amp; daily returns for US stocks</li>
+<li><strong>Compustat:</strong> historical accounting data for US companies</li>
+<li><strong>Mergent FISD:</strong> characteristics of US corporate bonds</li>
+<li><strong>TRACE:</strong> detailed US corporate bond transactions</li>
 </ul></li>
 </ul>
-<h3 id="other-data-providers">Other data providers</h3>
+</section>
+<section id="glimpse-at-historical-stock-data" class="slide level2">
+<h2>Glimpse at historical stock data</h2>
+<p>INSERT STOCKS BY LISTING EXCHANGE</p>
+</section>
+<section id="glimpse-at-historical-bond-data" class="slide level2">
+<h2>Glimpse at historical bond data</h2>
+<p>INSERT NUMBER OF BONDS OUTSTANDING</p>
+</section>
+<section id="other-data-providers" class="slide level2">
+<h2>Other data providers</h2>
 <ul>
 <li>Large ecosystem of alternative data providers</li>
 <li>Growing collection of R packages on <a href="https://www.tidy-finance.org/r/other-data-providers.html">tidy-finance.org</a></li>
 <li>Examples: <code>fredr</code>, <code>ecb</code>, <code>Rblpapi</code>, <code>Quandl</code>, <code>edgarWebR</code>, …</li>
 <li>Reach out via contact@tidy-finance.org if we missed something</li>
 </ul>
+<p>INSERT SOME IMAGE</p>
 </section>
 <section id="wraping-up" class="slide level2">
 <h2>Wraping-up</h2>
 <p>INSERT PROMOTION OF tidyfinance R PACKAGE?</p>
+<ul>
+<li>Read our open source material at tidy-finance.org</li>
+<li>Get in touch for teaching materials (slides, solutions)</li>
+<li>Contribute to mission of reproducible finance via our blog</li>
+</ul>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
