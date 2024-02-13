@@ -524,12 +524,12 @@ Christoph Scheuch
 <h2>Macroeconomic predictors</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">library</span>(readxl)</span>
-<span id="cb6-2"><a href=""></a><span class="fu">library</span>(googledrive)</span>
-<span id="cb6-3"><a href=""></a></span>
-<span id="cb6-4"><a href=""></a>macro_predictors_link <span class="ot">&lt;-</span></span>
-<span id="cb6-5"><a href=""></a>  <span class="st">"https://docs.google.com/spreadsheets/d/1g4LOaRj4TvwJr9RIaA_nwrXXWTOy46bP"</span></span>
-<span id="cb6-6"><a href=""></a></span>
-<span id="cb6-7"><a href=""></a><span class="fu">drive_download</span>(macro_predictors_link, <span class="at">path =</span> <span class="st">"macro_predictors.xlsx"</span>)</span>
+<span id="cb6-2"><a href=""></a></span>
+<span id="cb6-3"><a href=""></a><span class="fu">download.file</span>(</span>
+<span id="cb6-4"><a href=""></a>  <span class="at">url =</span> <span class="st">"https://docs.google.com/spreadsheets/d/1g4LOaRj4TvwJr9RIaA_nwrXXWTOy46bP/export?format=xlsx"</span>, </span>
+<span id="cb6-5"><a href=""></a>  <span class="at">destfile =</span> <span class="st">"macro_predictors.xlsx"</span>, </span>
+<span id="cb6-6"><a href=""></a>  <span class="at">mode =</span> <span class="st">"wb"</span></span>
+<span id="cb6-7"><a href=""></a>)</span>
 <span id="cb6-8"><a href=""></a></span>
 <span id="cb6-9"><a href=""></a>macro_predictors <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"macro_predictors.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Monthly"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb6-10"><a href=""></a>  <span class="fu">mutate</span>(</span>

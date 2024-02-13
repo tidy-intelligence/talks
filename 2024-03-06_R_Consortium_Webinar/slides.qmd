@@ -120,12 +120,12 @@ head(factors_q_monthly, 3)
 ```{r}
 #| eval: false
 library(readxl)
-library(googledrive)
 
-macro_predictors_link <-
-  "https://docs.google.com/spreadsheets/d/1g4LOaRj4TvwJr9RIaA_nwrXXWTOy46bP"
-
-drive_download(macro_predictors_link, path = "macro_predictors.xlsx")
+download.file(
+  url = "https://docs.google.com/spreadsheets/d/1g4LOaRj4TvwJr9RIaA_nwrXXWTOy46bP/export?format=xlsx", 
+  destfile = "macro_predictors.xlsx", 
+  mode = "wb"
+)
 
 macro_predictors <- read_xlsx("macro_predictors.xlsx", sheet = "Monthly") |> 
   mutate(
@@ -136,16 +136,13 @@ macro_predictors <- read_xlsx("macro_predictors.xlsx", sheet = "Monthly") |>
 ```{r}
 #| echo: false
 library(readxl)
-library(googledrive)
-drive_deauth()
-macro_predictors_link <-
-  "https://docs.google.com/spreadsheets/d/1g4LOaRj4TvwJr9RIaA_nwrXXWTOy46bP"
 
-drive_download(
-  macro_predictors_link,
-  path = "macro_predictors.xlsx",
-  overwrite = TRUE
-)
+doc_id <- "1g4LOaRj4TvwJr9RIaA_nwrXXWTOy46bP"
+url <- paste0("https://docs.google.com/spreadsheets/d/", 
+              doc_id, "/export?format=xlsx")
+destfile <- "macro_predictors.xlsx"
+download.file(url = url, destfile = destfile, mode = "wb")
+
 macro_predictors <- read_xlsx(
   "macro_predictors.xlsx",
   sheet = "Monthly"
@@ -166,6 +163,8 @@ macro_predictors <- read_xlsx(
   ) |>
   select(month, rp_div, dp, dy, ep, de, svar, bm = `b/m`, ntis, tbl, lty, ltr,tms, dfy, infl) |>
   drop_na()
+
+file.remove("macro_predictors.xlsx")
 head(macro_predictors, 3)
 ```
 
@@ -244,3 +243,9 @@ Cons:
 ## Wraping-up
 
 INSERT PROMOTION OF tidyfinance R PACKAGE?
+
+```{r}
+#| echo: false
+file.remove("tidy_finance_r.sqlite")
+```
+
