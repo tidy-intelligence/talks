@@ -2,7 +2,7 @@
 title: "Tidy Finance and Accessing Financial Data"
 subtitle: "R Consortium Webinar"
 author: "Christoph Scheuch"
-date: "March 6th, 2024"
+date: "2024-03-06"
 execute: 
   echo: true
   message: false
@@ -43,7 +43,11 @@ Code should not just be correct, but also **easy to read**:
 
 Combined with **tidy data** and **reproducible workflows**
 
-## Example code chunks
+## Recap: what is *tidy data*?
+
+![llustrations from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst](assets/img/alison-horst-tidy-data.jpeg){width=100%}
+
+## Example chunks with *tidy code*{.smaller}
 
 ```{r}
 #| eval: false
@@ -81,7 +85,11 @@ returns <- prices |>
 
 ## We also wrote books
 
-INSERT BOOK COVERS
+::: {layout-ncol=2}
+![](assets/img/tidy-finance-r-book.jpg){width=75%}
+
+![](assets/img/tidy-finance-python-book.jpeg){width=75%}
+:::
 
 # Accessing & Managing Financial Data
 
@@ -119,7 +127,7 @@ print(factors_ff3_monthly, n = 5)
 
 ## q-Factors{.smaller}
 
-Recent alternative to Fama-French data by Hou, Xue, and Zhang (2014)
+Alternative to Fama-French data by Hou, Xue, and Zhang (2014)
 
 ```{r}
 library(readr)
@@ -193,7 +201,7 @@ print(macro_predictors, n = 5)
 
 ## Other macroeconomic data{.smaller}
 
-10K data sets via Federal Reserve Economic Data (FRED) database 
+10K data sets available via Federal Reserve Economic Data (FRED) database 
 
 ```{r}
 library(tidyquant)
@@ -247,6 +255,7 @@ factors_ff3_monthly <- tbl(tidy_finance, "factors_ff3_monthly") |>
 - Limitations with respect to very large data & concurrency
 - Transfer to other languages cumbersome (e.g. Python)
 
+
 # WRDS & Other Data Providers
 
 ## Wharton Research Data Services (WRDS)
@@ -262,28 +271,42 @@ factors_ff3_monthly <- tbl(tidy_finance, "factors_ff3_monthly") |>
   
 ## Glimpse at historical stock data
 
-INSERT STOCKS BY LISTING EXCHANGE
+![](assets/img/crsp-stocks-by-exchange.png){width=100%}
 
-## Glimpse at historical bond data
+## Glimpse at historical bond data{.center}
 
-INSERT NUMBER OF BONDS OUTSTANDING
+![](assets/img/trace-fisd-bonds.png){width=100%}
 
 ## Other data providers
 
 - Large ecosystem of alternative data providers
 - Growing collection of R packages on [tidy-finance.org](https://www.tidy-finance.org/r/other-data-providers.html)
 - Examples: `fredr`, `ecb`, `Rblpapi`, `Quandl`, `edgarWebR`, ...
-- Reach out via contact@tidy-finance.org if we missed something
+- Reach out via **contact@tidy-finance.org** if we missed something
 
-INSERT SOME IMAGE
+# Wrap-up
 
-## Wraping-up
+## Tidy approach to teaching & research
 
-INSERT PROMOTION OF tidyfinance R PACKAGE?
+Shortcut via new `tidyfinance` R package:
+```{r}
+#| eval: false
+#| echo: true
+install.packages("tidyfinance")
 
-- Read our open source material at tidy-finance.org
-- Get in touch for teaching materials (slides, solutions)
-- Contribute to mission of reproducible finance via our blog
+tidyfinance::download_data(
+  type = "wrds_crsp_monthly", 
+  start_date = "1960-01-01", end_date = "2020-12-31"
+)
+```
+
+<br>
+
+Main takeaways:
+
+- Detailed open source material at **tidy-finance.org**
+- Get in touch for **teaching materials** (slides, solutions)
+- Contribute to mission of reproducible finance via our **blog**
 
 ```{r}
 #| echo: false

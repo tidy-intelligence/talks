@@ -11,6 +11,7 @@
   <meta name="generator" content="quarto-1.4.538">
 
   <meta name="author" content="Christoph Scheuch">
+  <meta name="dcterms.date" content="2024-03-06">
   <title>Tidy Finance and Accessing Financial Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -403,7 +404,7 @@ Christoph Scheuch
 </div>
 </div>
 
-  <p class="date">Invalid Date</p>
+  <p class="date">2024-03-06</p>
 </section>
 <section id="what-is-tidy-finance" class="slide level2">
 <h2>What is Tidy Finance?</h2>
@@ -426,8 +427,12 @@ Christoph Scheuch
 </ol>
 <p>Combined with <strong>tidy data</strong> and <strong>reproducible workflows</strong></p>
 </section>
-<section id="example-code-chunks" class="slide level2">
-<h2>Example code chunks</h2>
+<section id="recap-what-is-tidy-data" class="slide level2">
+<h2>Recap: what is <em>tidy data</em>?</h2>
+
+<img data-src="assets/img/alison-horst-tidy-data.jpeg" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">llustrations from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst</p></section>
+<section id="example-chunks-with-tidy-code" class="slide level2 smaller">
+<h2>Example chunks with <em>tidy code</em></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Load packages</span></span>
 <span id="cb1-2"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
@@ -460,7 +465,16 @@ Christoph Scheuch
 <img data-src="assets/img/tidy-finance-team.png" class="r-stretch"></section>
 <section id="we-also-wrote-books" class="slide level2">
 <h2>We also wrote books</h2>
-<p>INSERT BOOK COVERS</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="assets/img/tidy-finance-r-book.jpg" style="width:75.0%"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="assets/img/tidy-finance-python-book.jpeg" style="width:75.0%"></p>
+</div>
+</div>
+</div>
 </section>
 <section>
 <section id="accessing-managing-financial-data" class="title-slide slide level1 center">
@@ -517,7 +531,7 @@ Christoph Scheuch
 </section>
 <section id="q-factors" class="slide level2 smaller">
 <h2>q-Factors</h2>
-<p>Recent alternative to Fama-French data by Hou, Xue, and Zhang (2014)</p>
+<p>Alternative to Fama-French data by Hou, Xue, and Zhang (2014)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">library</span>(readr)</span>
 <span id="cb4-2"><a href=""></a></span>
@@ -579,7 +593,7 @@ Christoph Scheuch
 </section>
 <section id="other-macroeconomic-data" class="slide level2 smaller">
 <h2>Other macroeconomic data</h2>
-<p>10K data sets via Federal Reserve Economic Data (FRED) database</p>
+<p>10K data sets available via Federal Reserve Economic Data (FRED) database</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">library</span>(tidyquant)</span>
 <span id="cb8-2"><a href=""></a></span>
@@ -592,15 +606,15 @@ Christoph Scheuch
 <span id="cb8-9"><a href=""></a>  )</span>
 <span id="cb8-10"><a href=""></a><span class="fu">print</span>(cpi_monthly, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 120 × 2
+<pre><code># A tibble: 121 × 2
   month        cpi
   &lt;date&gt;     &lt;dbl&gt;
-1 2014-01-01 0.763
-2 2014-02-01 0.765
-3 2014-03-01 0.770
-4 2014-04-01 0.773
-5 2014-05-01 0.776
-# ℹ 115 more rows</code></pre>
+1 2014-01-01 0.758
+2 2014-02-01 0.761
+3 2014-03-01 0.766
+4 2014-04-01 0.769
+5 2014-05-01 0.771
+# ℹ 116 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -663,29 +677,43 @@ Christoph Scheuch
 </section>
 <section id="glimpse-at-historical-stock-data" class="slide level2">
 <h2>Glimpse at historical stock data</h2>
-<p>INSERT STOCKS BY LISTING EXCHANGE</p>
-</section>
-<section id="glimpse-at-historical-bond-data" class="slide level2">
+
+<img data-src="assets/img/crsp-stocks-by-exchange.png" style="width:100.0%" class="r-stretch"></section>
+<section id="glimpse-at-historical-bond-data" class="slide level2 center">
 <h2>Glimpse at historical bond data</h2>
-<p>INSERT NUMBER OF BONDS OUTSTANDING</p>
-</section>
+
+<img data-src="assets/img/trace-fisd-bonds.png" style="width:100.0%" class="r-stretch"></section>
 <section id="other-data-providers" class="slide level2">
 <h2>Other data providers</h2>
 <ul>
 <li>Large ecosystem of alternative data providers</li>
 <li>Growing collection of R packages on <a href="https://www.tidy-finance.org/r/other-data-providers.html">tidy-finance.org</a></li>
 <li>Examples: <code>fredr</code>, <code>ecb</code>, <code>Rblpapi</code>, <code>Quandl</code>, <code>edgarWebR</code>, …</li>
-<li>Reach out via contact@tidy-finance.org if we missed something</li>
+<li>Reach out via <strong>contact@tidy-finance.org</strong> if we missed something</li>
 </ul>
-<p>INSERT SOME IMAGE</p>
+</section></section>
+<section>
+<section id="wrap-up" class="title-slide slide level1 center">
+<h1>Wrap-up</h1>
+
 </section>
-<section id="wraping-up" class="slide level2">
-<h2>Wraping-up</h2>
-<p>INSERT PROMOTION OF tidyfinance R PACKAGE?</p>
+<section id="tidy-approach-to-teaching-research" class="slide level2">
+<h2>Tidy approach to teaching &amp; research</h2>
+<p>Shortcut via new <code>tidyfinance</code> R package:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">install.packages</span>(<span class="st">"tidyfinance"</span>)</span>
+<span id="cb11-2"><a href=""></a></span>
+<span id="cb11-3"><a href=""></a>tidyfinance<span class="sc">::</span><span class="fu">download_data</span>(</span>
+<span id="cb11-4"><a href=""></a>  <span class="at">type =</span> <span class="st">"wrds_crsp_monthly"</span>, </span>
+<span id="cb11-5"><a href=""></a>  <span class="at">start_date =</span> <span class="st">"1960-01-01"</span>, <span class="at">end_date =</span> <span class="st">"2020-12-31"</span></span>
+<span id="cb11-6"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<p>Main takeaways:</p>
 <ul>
-<li>Read our open source material at tidy-finance.org</li>
-<li>Get in touch for teaching materials (slides, solutions)</li>
-<li>Contribute to mission of reproducible finance via our blog</li>
+<li>Detailed open source material at <strong>tidy-finance.org</strong></li>
+<li>Get in touch for <strong>teaching materials</strong> (slides, solutions)</li>
+<li>Contribute to mission of reproducible finance via our <strong>blog</strong></li>
 </ul>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
