@@ -26,22 +26,21 @@ library(tidyverse)
 
 A **transparent**, **open-source** approach to financial economics research, featuring **multiple programming languages**
 
-![](assets/img/tidy-finance-r-cover.png){width=100%}
-
 * Learn about empirical applications using tidy principles
+* Learn to work with financial data in a tidy manner
 * Teach students the importance of reproducible research
-* Contribute to reproducible finance via our blog
+* Contribute to reproducible finance research via our blog
 
-## Why Tidy?
+## Why Tidy? 
 
-Code should not just be correct, but also **easy to read**:
+Code should not just be correct, but also follow principles:
 
-1. Design of humans.
-2. Embrace functional programming.
-3. Compose simple functions.
-4. Reuse existing data structures.
+1. Design so that code is easy to read for humans
+2. Compose simple functions to solve complex problems
+3. Embrace functional programming to create reproducible results
+4. Reuse existing data structures across applications
 
-Combined with **tidy data** and **reproducible workflows**
+Focus of this talk: **tidy data**
 
 ## Recap: what is *tidy data*?
 
@@ -49,6 +48,9 @@ Combined with **tidy data** and **reproducible workflows**
 
 ## Example chunks with *tidy code*{.smaller}
 
+::: {.panel-tabset}
+
+### R
 ```{r}
 #| eval: false
 #| echo: true
@@ -71,6 +73,42 @@ returns <- prices |>
   select(symbol, date, ret) |>
   drop_na(ret)
 ```
+### Python
+```{python}
+#| eval: false
+#| echo: true
+# Load libraries
+import pandas as pd
+import numpy as np
+import yfinance as yf
+
+# Download symbols of DOW index
+url = ("https://www.ssga.com/us/en/institutional/etfs/library-content/"
+       "products/fund-data/etfs/us/holdings-daily-us-en-dia.xlsx")
+symbols = (pd.read_excel(url, skiprows=4, nrows=30)
+  .get("Ticker")
+  .tolist()
+)
+
+# Download prices of DOW index constituents
+index_prices = (yf.download(tickers=symbols, start="2000-01-01", end="2022-12-31")
+  .melt(ignore_index=False, var_name=["variable", "symbol"])
+  .reset_index()
+  .pivot(index=["Date", "symbol"], columns="variable", values="value")
+  .reset_index()
+  .rename(columns={"Date": "date", "Open": "open", "High": "high", "Low": "low", 
+                   "Close": "close", "Adj Close": "adjusted", "Volume": "volume"})
+)
+
+# Calculate returns
+all_returns = (index_prices
+  .assign(ret=lambda x: x.groupby("symbol")["adjusted"].pct_change())
+  .get(["symbol", "date", "ret"])
+  .dropna(subset="ret")
+)
+```
+:::
+
 
 ## Welcoming contributions on our blog 
 
@@ -101,12 +139,12 @@ returns <- prices |>
   - Use SQLite to organize data in a database
 - **R Packages:** 
   - Manipulation: `tidyverse`, 
-  - Import: `tidyquant`, `frenchdata`, `readxl`, 
+  - Import: `tidyquant`, `frenchdata`, `readxl`
   - Storage: `RSQLite`
 
 ## Fama-French factors & portfolios{.smaller}
 
-Most popular data for asset pricing tests due to Fama and French (1993)
+Most popular data for asset pricing tests since Fama and French (1993)
 
 ```{r}
 library(frenchdata)
@@ -279,16 +317,23 @@ factors_ff3_monthly <- tbl(tidy_finance, "factors_ff3_monthly") |>
 
 ## Other data providers
 
-- Large ecosystem of alternative data providers
-- Growing collection of R packages on [tidy-finance.org](https://www.tidy-finance.org/r/other-data-providers.html)
+Large ecosystem of alternative data providers
+
+- Extensive list of R packages on [tidy-finance.org](https://www.tidy-finance.org/r/other-data-providers.html)
 - Examples: `fredr`, `ecb`, `Rblpapi`, `Quandl`, `edgarWebR`, ...
-- Reach out via **contact@tidy-finance.org** if we missed something
+
+<br>
+
+Are we missing an important package?
+
+- Reach out via **contact@tidy-finance.org**
 
 # Wrap-up
 
 ## Tidy approach to teaching & research
 
-Shortcut via new `tidyfinance` R package:
+A simpler way to access financial data in a tidy way:
+
 ```{r}
 #| eval: false
 #| echo: true
