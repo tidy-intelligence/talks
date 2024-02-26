@@ -14,6 +14,8 @@ format:
     slide-number: true
     theme: assets/scss/slides.scss
     css: assets/css/styles.css
+    title-slide-attributes:
+      data-background-image: "assets/img/tidy-finance-r-cover.png"
 ---
 
 ```{r}

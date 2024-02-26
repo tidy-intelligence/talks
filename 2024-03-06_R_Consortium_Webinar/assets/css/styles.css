@@ -1,0 +1,12 @@
+#title-slide {
+  text-align: center; /* Centers the text elements */
+}
+
+#title-slide .title,
+#title-slide .subtitle,
+#title-slide .quarto-title-author-name,
+#title-slide .date {
+  background-color: white; /* Sets the background color to white */
+  display: inline-block; /* Makes the background only as wide as the text */
+  padding: 0 10px; /* Optional: Adds some padding around the text for visual spacing */
+}
