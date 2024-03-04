@@ -27,6 +27,7 @@ library(tidyverse)
 ## What is Tidy Finance?
 
 A **transparent**, **open-source** approach to research in financial economics, featuring **multiple programming languages**
+
 <br>
 
 **tidy-finance.org** offers tools to:
@@ -42,8 +43,10 @@ Code should not just be correct, but also follow principles:
 
 1. Design so that code is **easy to read** for humans
 2. **Compose simple functions** to solve complex problems
-3. **Embrace functional programming** to create reproducible results
+3. **Embrace functional programming** for reproducible results
 4. **Reuse data structures** across applications
+
+<br>
 
 Focus of this talk: **tidy data**
 
@@ -354,7 +357,7 @@ tidyfinance::download_data(
 
 - Detailed open source material at **tidy-finance.org**
 - Get in touch for **teaching materials** & to **contribute to blog**
-- Follow me on LinkedIn for news [linkedin.com/in/christophscheuch](linkedin.com/in/christophscheuch)
+- Follow me for news [linkedin.com/in/christophscheuch](linkedin.com/in/christophscheuch)
 
 ```{r}
 #| echo: false
