@@ -26,7 +26,10 @@ library(tidyverse)
 
 ## What is Tidy Finance?
 
-A **transparent**, **open-source** approach to financial economics research, featuring **multiple programming languages**
+A **transparent**, **open-source** approach to research in financial economics, featuring **multiple programming languages**
+<br>
+
+**tidy-finance.org** offers tools to:
 
 * Learn about empirical applications using tidy principles
 * Learn to work with financial data in a tidy manner
@@ -37,10 +40,10 @@ A **transparent**, **open-source** approach to financial economics research, fea
 
 Code should not just be correct, but also follow principles:
 
-1. Design so that code is easy to read for humans
-2. Compose simple functions to solve complex problems
-3. Embrace functional programming to create reproducible results
-4. Reuse existing data structures across applications
+1. Design so that code is **easy to read** for humans
+2. **Compose simple functions** to solve complex problems
+3. **Embrace functional programming** to create reproducible results
+4. **Reuse data structures** across applications
 
 Focus of this talk: **tidy data**
 
@@ -140,7 +143,7 @@ all_returns = (index_prices
   - Use R to import, prepare & store data 
   - Use SQLite to organize data in a database
 - **R Packages:** 
-  - Manipulation: `tidyverse`, 
+  - Manipulation: `tidyverse`
   - Import: `tidyquant`, `frenchdata`, `readxl`
   - Storage: `RSQLite`
 
@@ -322,19 +325,19 @@ factors_ff3_monthly <- tbl(tidy_finance, "factors_ff3_monthly") |>
 Large ecosystem of alternative data providers
 
 - Extensive list of R packages on [tidy-finance.org](https://www.tidy-finance.org/r/other-data-providers.html)
-- Examples: `fredr`, `ecb`, `Rblpapi`, `Quandl`, `edgarWebR`, ...
+- Examples: `fredr`, `ecb`, `Rblpapi`, `Quandl`, `edgarWebR`, etc.
 
 <br>
 
 Are we missing an important package?
 
-- Reach out via **contact@tidy-finance.org**
+- please reach out via **contact@tidy-finance.org**
 
 # Wrap-up
 
 ## Tidy approach to teaching & research
 
-A simpler way to access financial data in a tidy way:
+`tidyfinance` R package to access financial data in a tidy way:
 
 ```{r}
 #| eval: false
@@ -349,11 +352,9 @@ tidyfinance::download_data(
 
 <br>
 
-Main takeaways:
-
 - Detailed open source material at **tidy-finance.org**
-- Get in touch for **teaching materials** (slides, solutions)
-- Contribute to mission of reproducible finance via our **blog**
+- Get in touch for **teaching materials** & to **contribute to blog**
+- Follow me on LinkedIn for news [linkedin.com/in/christophscheuch](linkedin.com/in/christophscheuch)
 
 ```{r}
 #| echo: false
