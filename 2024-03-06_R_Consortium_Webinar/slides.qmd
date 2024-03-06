@@ -14,15 +14,17 @@ format:
     slide-number: true
     theme: assets/scss/slides.scss
     css: assets/css/styles.css
+    embed-resources: true
     title-slide-attributes:
       data-background-image: "assets/img/tidy-finance-r-cover.png"
+title-slide-attributes: 
+  data-notes: Alright, thanks for joining us for Tidy Finance and Accessing Financial Data<br>Also thanks to the R Consortium for hosting this webinar<br>My name is Christoph Scheuch, I’m currently the Head of Artificial Intelligence at wikifolio Financial Technologies and co-author and maintainer of the Tidy Finance project.<br>In today’s webinar, I’ll introduce the Tidy Finance project and talk about why R is a great language to access and manage various financial data sources<br>At the end of the webinar, I’m also pleased to announce a new R package that is available on CRAN
 ---
 
 ```{r}
 #| echo: false
 library(tidyverse)
 ```
-
 
 ## What is Tidy Finance?
 
@@ -36,6 +38,11 @@ A **transparent**, **open-source** approach to research in financial economics, 
 * Learn to work with financial data in a tidy manner
 * Teach students the importance of reproducible research
 * Contribute to reproducible finance research via our blog
+
+::: {.notes}
+- Tidy Finance is the result of our struggles as finance PhD students who faced substantial challenges when starting our first research projects: there was a LOT of data cleaning involved - and nobody prepared us for that - and the code to produce even seminal results is typically opaque.
+- In fact, it was claimed by prominent voices that financial economics has a reproducibility crisis.
+:::
 
 ## Why Tidy? 
 
