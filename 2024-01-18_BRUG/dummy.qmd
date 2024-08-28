@@ -1,7 +1,7 @@
 ---
 title: "A Dummy Document"
 author: "Christoph Scheuch"
-format: pdf
+format: docx
 ---
 
 ## This is a headline
